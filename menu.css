@@ -1,0 +1,100 @@
+/* Quita márgenes y viñetas del menú */
+/* --- ESTILO DEL MENÚ --- */
+
+nav {
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 10px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex; /* Activa el diseño flexible */
+    align-items: center; /* Centra verticalmente los elementos */
+}
+
+/* El logo empuja todo lo demás a la derecha */
+nav ul li.logo {
+    margin-right: auto;
+}
+
+/* Estilo del logo */
+.logo img {
+    height: 50px; /* Ajusta el tamaño según tu logo */
+    display: block;
+}
+
+/* Estilo de los enlaces */
+nav ul li a {
+    text-decoration: none;
+    color: var(--text); /* Usa la variable de styles.css */
+    font-weight: 600;
+    padding: 10px 15px;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: var(--accent); /* Usa la variable de styles.css */
+}
+
+/* Opcional: Estilo para indicar la página activa */
+nav ul li a.active {
+    border-bottom: 2px solid var(--accent);
+    color: var(--accent);
+}
+
+/* --- MENÚ DE NAVEGACIÓN --- */
+
+/* Usamos las mismas variables que definiste en tu hoja de estilos */
+.main-nav {
+    background-color: var(--dark-bg); /* Fondo oscuro profesional */
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.nav-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-link {
+    color: white;
+    font-family: 'Helvetica', Arial, sans-serif;
+    text-decoration: none;
+    font-weight: bold;
+    padding-bottom: 5px;
+    border-bottom: 2px solid transparent; /* Efecto de subrayado sutil */
+    transition: 0.3s ease;
+}
+
+/* Color de acento al pasar el ratón usando el amarillo de Python */
+.nav-link:hover {
+    color: var(--python-yellow);
+    border-bottom: 2px solid var(--python-yellow);
+}
+
+/* Estilo para la página donde se encuentre el usuario */
+.nav-link.active {
+    color: var(--python-yellow);
+    border-bottom: 2px solid var(--python-yellow);
+}

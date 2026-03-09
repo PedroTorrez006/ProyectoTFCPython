@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evolución de Python | Python 1.x</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="menu.css">
+</head>
+<body>
+        
+    <script src="menu.js"></script>
+    <div id="menu" class="menu"></div>
+
+    <div class="container">
+
+        <header class="hero-versions">
+            <h1>Python 1.x: El Origen de una Filosofía</h1>
+            <p>1991 - 2000 | La creación de Guido van Rossum</p>
+        </header>
+
+        <main class="content-container">
+            <section class="text-block">
+                <h2>El nacimiento del lenguaje</h2>
+                <p>Fue lanzada a principio de los años 90, la serie 1 de Python no fue solo un experimento, sino la respuesta a la necesidad de un lenguaje que fuera legible y potente a la vez. 
+                    En esta etapa se establecieron las bases que hoy definen a Python como un lenguaje de alto nivel.</p>
+            </section>
+
+            <section>
+                <h2>Análisis de la Serie 1.x</h2>
+                
+                <ul>
+                    <li><strong>Python 1.0:</strong> 
+                        <p>Esta versión es histórica porque fue la que introdujo las herramientas de programación funcional.
+                            Estas permitieron procesar colecciones de forma elegante y directa. 
+                            Un ejemplo sería el siguiente:
+                            <ul>
+                                <li>filter(): Se usa cuando queremos filtrar elementos basados en una condición. A diferencia de map, el resultado puede tener menos elementos que la lista origina, pero los que quedan están intactos.</li><br>
+                                
+                                <li>map(): Se usa cuando queremos aplicar la misma operación a cada elemento de una lista. El resultado será una nueva lista con el mismo número de elementos, pero todos habrán sido modificados o "mapeados".</li>
+                            </ul>
+                    </p></li>
+
+                    <li><strong>Python 1.1:</strong>
+                        <p>Esta versión fue lanzada poco después de la 1.0, Si bien esta versión no introdujo cambios disruptivos en la sintaxis, su valor estratégico fue fundamental para el crecimiento del ecosistema. 
+                            Python 1.1 fue la primera versión que logró una adaptación robusta para MacOS, lo que permitió romper la dependencia exclusiva con el entorno Unix/Linux. 
+                            Este hito fue determinante para la adopción temprana del lenguaje en entornos de desarrollo fuera de la academia y centros de investigación científica, facilitando su integración en arquitecturas de escritorio heterogéneas.
+                        </p>
+                    </li>
+                        
+                    <li><strong>Python 1.2:</strong>
+                        <p>Esta versión se hizo pública en 1995. 
+                            Esta versión se centró en la madurez del sistema como herramienta de producción. 
+                            Se realizaron ajustes significativos en el sistema de licencias y se amplió el catálogo de la biblioteca estándar. 
+                            Desde el punto de vista del intérprete, la mejora crítica radicó en la gestión de memoria interna; se refinaron los mecanismos de asignación y liberación, logrando una mayor estabilidad en la ejecución de scripts de larga duración y reduciendo drásticamente los errores de cierre inesperado (segmentation faults).</p>
+                    </li>
+
+                    <li><strong>Python 1.3:</strong>
+                        <p>Esta versión se lanzo en octubre de 1995. 
+                            Esta versión marcó un hito en la optimización del rendimiento del intérprete. 
+                            El enfoque principal fue resolver los cuellos de botella en la gestión de datos y fortalecer la arquitectura del paradigma orientado a objetos.
+                            <ul>
+                                <li>Optimización del Acceso a Datos (Tablas Hash), El aporte más trascendental de la versión 1.3 fue la reingeniería de la implementación de los diccionarios. 
+                                    Python utiliza internamente tablas hash (tablas de dispersión) para gestionar las relaciones clave-valor.
+                                    
+                                    <ul><br>
+                                        <li>El reto: A medida que la cantidad de datos en un diccionario aumenta, el costo computacional de buscar o insertar un elemento puede degradarse si la función de dispersión (hash function) tiene muchas colisiones.</li><br>
+                                        
+                                        <li>La mejora: Se optimizaron las funciones de resolución de colisiones y la lógica de redimensionamiento de las tablas. 
+                                            Esto garantizó que el tiempo de búsqueda promedio se mantuviera cercano a tiempo constante, permitiendo al lenguaje manejar grandes volúmenes de datos sin un impacto significativo en la latencia del programa.</li>
+                                    </ul>
+                                </li>
+                                
+                                <li>Consolidación de la Porgramación Orientada a Objetos (POO), En la versión 1.3, el sistema de tipos y la herencia recibieron una atención prioritaria:
+
+                                    <ul><br>
+                                        <li>Refinamiento de la Herencia: Se mejoró la jerarquía de clases, permitiendo una gestión más limpia y eficiente de los métodos y atributos heredados. 
+                                            Esto redujo el overhead (costo extra de procesamiento) al invocar métodos en cadenas de herencia complejas.</li><br>
+
+                                        <li>Encapsulamiento y coherencia: Se fortaleció la capacidad del lenguaje para crear estructuras de objetos modulares, un requisito indispensable para desarrollar software escalable que pudiera sobrevivir a la creciente complejidad de los sistemas de los años 90.</li>    
+                                    </ul>
+                                </li>
+                                
+                            </ul>
+                        </p>
+                    </li>
+
+                    <li><strong>Python 1.4:</strong>
+                        <p></p>
+                    </li>
+
+                    <li><strong>Python 1.5:</strong></li>
+
+                    <li><strong>Python 1.6:</strong></li>
+                </ul>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
