@@ -67,7 +67,7 @@
                                         <li>El reto: A medida que la cantidad de datos en un diccionario aumenta, el costo computacional de buscar o insertar un elemento puede degradarse si la función de dispersión (hash function) tiene muchas colisiones.</li><br>
                                         
                                         <li>La mejora: Se optimizaron las funciones de resolución de colisiones y la lógica de redimensionamiento de las tablas. 
-                                            Esto garantizó que el tiempo de búsqueda promedio se mantuviera cercano a tiempo constante, permitiendo al lenguaje manejar grandes volúmenes de datos sin un impacto significativo en la latencia del programa.</li>
+                                            Esto garantizó que el tiempo de búsqueda promedio se mantuviera cercano a tiempo constante, permitiendo al lenguaje manejar grandes volúmenes de datos sin un impacto significativo en la latencia del programa.</li><br>
                                     </ul>
                                 </li>
                                 
@@ -86,12 +86,58 @@
                     </li>
 
                     <li><strong>Python 1.4:</strong>
-                        <p></p>
+                        <p>Esta versión salio en 1996. 
+                            Lo que caracteriza esta versión es por ser una versión de gran peso debido a que introdujo los Argumentos de Palabra Clave (Keyword Arguments). 
+                            Qué permiten pasar valores a funciones especificando el nombre del parámetro (nombre = valor) al momento de llamarlas. 
+                            Esto supone una mejora para la legibilidad, también permite cambiar el orden de los argumentos y facilita el uso de valores predeterminados, haciendo el código más claro y flexible.
+                        </p>
                     </li>
 
-                    <li><strong>Python 1.5:</strong></li>
+                    <li><strong>Python 1.5:</strong>
+                        <p>Esta versión fue lanzada en 1997, es considerada la versión que puso a Python en el mapa empresarial.
+                            Introdujo el módulo re, que es un módulo de la biblioteca estándar que permite trabajar con expresiones regulares (RegEx) para buscar, validar, manipular y extraer patrones específicos de texto dentro de cadenas. 
+                            Estas se importan con el import re y facilita las tareas como la validación de correos electrónicos, extracción de números o situación de texto.
 
-                    <li><strong>Python 1.6:</strong></li>
+                            <ul>
+                                <li>Una característica clave del módulo es que usa patrones de búsqueda, utilizando sintaxis de expresiones regulares para definir qué busca, incluyendo literales y metacaracteres.</li><br>
+
+                                <li>Las funciones principales son las siguientes:
+                                    <ul>
+                                        <li>re.search(): Busca la primera coincidencia del patrón en la cadena.</li>
+                                        <li>re.findall(): Encuentra todas las coincidencias y las devuelve como una lista.</li>
+                                        <li>re.sub(): Determina si el patrón coincide al inicio de la cadena.</li>
+                                        <li>re.match(): Determina si el patrón coincide al inicio de la cadena.</li>
+                                        <li>re.compile(): Compila una expresión regular en un objeto reutilizable para mayor eficiencia.</li>
+                                    </ul>
+                                
+                                </li>
+                            </ul><br>
+                            
+                            También me gustaría destacar una versión que salió durante la versión 1.5, siendo la versión 1.5.2, esta versión se lanzó en 1999 fue la versión más estable y durarera de toda la serie 1.
+                            Fue tan robusta que muchas distribuciones de Linux (como Red Hat 6.2) la mantuvieron como su lenguaje pro defecto durante años, incluso cuando la versión 2.0 ya existía. 
+                            Se centro casi exclusivamente en la corrección de errores y en hacer la biblioteca estándar "a prueba de balas".
+                        </p>
+                    </li>
+
+                    <li><strong>Python 1.6:</strong>
+                        <p>Esta versión se lanzó el 5 de septiembre de 2000, fue una versión fundamental ya que sirvió de puente hacia la era moderna de Python (iniciada con la 2.0).
+                            Las principales novedades y características que trajo esta versión fueron:
+                            <ul>
+                                <li>Soporte nativo para Unicode: Se añadió el tipo de dato Unicode, la función unicode() y numerosas APIs en C para manejar caracteres internacionales y codificaciones.</li>
+                                <li>Nuevo motor de expresiones regulares (SRE): Se introdujo un nuevo motor de expresiones regulares (módulo sre), creado por Fredrik Lundh, que es más rápido y compatible con Unicode.</li>
+                                <li>Métodos de cadena (String Methods): Se comenzaron a añadir métodos a los objetos de cadena como por ejemplo s.lower(), en lugar de depender únicamente del módulo string como string.lower(s).</li>
+                                <li>Distutils: Se incluyó el paquete Distutils para la construcción y distribución de módulos de Python.</li>
+                                <li>Cambio de Licencia: Python 1.6 incluyó una nueva licencia CNRI, que resultó en ser incompatible con la GPL, lo que motivó el lanzamiento casi inmediato de la versión 1.6.1 para corregir este aspecto.</li>
+                                <li>Cambio en el compartimiento de las funciones split y replace: Los argumentos por defecto para maxsplit en los métodos de cadena split() y replace() cambiaron de 0 a -1.</li>
+                            </ul>
+                        </p>
+                    </li>
+
+                    <p>La última versión liberada proviniente de CWI fue Python 1.2.
+                        En 1995, Van Rossum continuó su trabajo en Python en la Corporation for National Research Initiatives (CNRI) en Reston, Virginia, donde lanzó varias versiones del software.
+                        La versión 1.6 fue la última versión publicada por CNRI el 5 de septiembre de 2000.
+                        Estas versiones iniciales sentaron la base del modelo de programación de Python: limpieza de sintaxis, modularidad y soporte para paradigmas múltiples (imperativo, orientado a objetos, ligero uso de funciones).
+                    </p>
                 </ul>
             </section>
         </main>
