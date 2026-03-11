@@ -26,6 +26,10 @@ La web se organiza en módulos independientes para facilitar el acceso a la info
 - **Gráficos y Diagramas**: Incorporación de esquemas técnicos de arquitectura y estadísticas de uso de mercado (TIOBE/Stack Overflow).
 
 ## Componentes Técnicos Investigados
-* **Intérprete CPython:** Flujo de ejecución desde el código fuente hasta la CPU.
-* **Gestión de Memoria:** Análisis del Recolector de Basura y el Global Interpreter Lock (GIL).
-* **Modelos de Datos:** Evolución de las estructuras internas (listas, diccionarios y generadores).
+- **Intérprete CPython:** Flujo de ejecución desde el código fuente hasta la CPU.
+- **Gestión de Memoria:** Análisis del Recolector de Basura y el Global Interpreter Lock (GIL).
+- **Modelos de Datos:** Evolución de las estructuras internas (listas, diccionarios y generadores).
+
+## Enlace de la Página web
+- Aqui te dejo el enlace de mi página web:
+https://pedrotorrez006.github.io/ProyectoTFCPython/
