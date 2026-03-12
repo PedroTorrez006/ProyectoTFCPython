@@ -76,28 +76,128 @@
                             </p>
                         </li>
 
-                        <li><strong>Python 3.5:</strong></li>
+                        <li><strong>Python 3.5:</strong>
+                            <p>Esta versión se lanzó el 13 de septiembre de 2015, esta versión destacó en introducir nuevos aspectos.
+                                En la sintaxis introdujo los siguientes aspectos:
+                                <ul>
+                                    <li>Mejoró enormemente el soporte de la programación asíncrona al agregar objetos aguardables, funciones corrutina, iteraciones asincrónicas y gestores asincrónicos de contexto.</li><br>
+                                    <li>Además se amplió la capacidad de usar los operadores de desempaquetado * (para iterables) y ** (para diccionarios) en más contextos, como en literales de listas.</li>
+                                </ul>
+                            </p>
+                        </li>
 
-                        <li><strong>Python 3.6:</strong></li>
+                        <li><strong>Python 3.6:</strong>
+                            <p>Esta versión se lanzó el 23 de diciembre de 2016, esta versión se caracterizo por mejorar la productividad al introducir nuevas formas de fomentar cadenas y avanzar en la adopción del tipado estático opcional.
+                                <ul>
+                                    <li>Cadenas Literales Formateadas (f-Strings): Las "f-strings" proporcionan una sintaxis concisa, eficiente y legible para incrustar expresiones de Python dentro de cadenas de texto. Son la forma preferida de formateo de cadenas en la actualidad.</li><br>
+                                    <li>También introdujo las Anotaciones de Tipo para Variables que estas permitieron anotar el tipo de las variables dentro del cuerpo de la función o módulo,  no solo en los parámetros y valores de retorno de la función. 
+                                        Esto ayuda a herramientas de análisis de código (como Mypy) a realizar una mejor comprobación estática.</li>
+                                </ul>
+                            </p>
+                        </li>
 
-                        <li><strong>Python 3.7:</strong></li>
+                        <li><strong>Python 3.7:</strong>
+                            <p>Esta versión se lanzó el 27 de junio de 2018, introdujo una característica que elimina la necesidad de escribir mucho código repetitivo (boilerplate) en clases que solo se usan para almacenar datos.
+                                <ul>
+                                    <li>Una de las innovaciones que trajo fue las Clases de Datos, El decorador @dataclass permite crear clases con métodos comunes como __init__, __repr__ y __eq__ generados automáticamente, haciéndolas ideales para modelar estructuras de datos.</li>
+                                </ul>
+                            </p>
+                        </li>
 
-                        <li><strong>Python 3.8:</strong></li>
+                        <li><strong>Python 3.8:</strong>
+                            <p>Esta versión se lanzó el 14 de octubre de 2019, esta versión renovó python con una novedad sintáctica importante que permite asignar un valor a una variable y usar ese valor en una expresión, todo en una solo línea, mejorando la eficiencia y legibilidad en ciertas estructuras de control.
+                                Estas serían las Expresiones de Asignación (Operador Morsa :=).
+                                El operador morsa permite asignar un valor a una variable como parte de una expresión.
+                                Esto es útil para evitar recalcular un valor o para hacer más compactas ciertas comprobaciones de <code>if</code> o <code>while</code>.
+                            </p>
+                        </li>
 
-                        <li><strong>Python 3.9:</strong></li>
+                        <li><strong>Python 3.9:</strong>
+                            <p>Esta versión se lanzó el 5 de octubre de 2020, se centró en mejorar la productividad al refinar el trabajo con estructuras de datos fundamentales como los diccionarios y las cadenas de texto, además de avanzar en la simplificación de las anotaciones de tipo.
+                                <ul>
+                                    <li>Se introdujeron Nuevos Operadores para Fusión y Actualización de Diccionarios, los siguientes operadores consiguieron simplificar la sintaxis para combinar y modificar diccionarios de forma concisa.</li><br>
+                                    
+                                    <ul>
+                                        <li>Fusión ( | ), Esté operador crea un nuevo diccionario a partir de dos o más.
+                                            Si hay claves duplicadas, el valor del operador de la derecha se mantiene.</li><br>
 
-                        <li><strong>Python 3.10:</strong></li>
+                                        <li>Actualización ( |= ), Esté operador modifica el diccionario original con las claves y valores de la derecha.</li><br>
+                                    </ul>
 
-                        <li><strong>Python 3.11:</strong></li>
+                                    <li>También se añadieron Nuevos Métodos para cadenas de texto (removeprefix y removesuffix), donde se añadieron dos métodos muy solicitados a las cadenas (str) para eliminar prefijos y sufijos de manera explícita y segura. 
+                                        Si el prefijo o sufijo no está presente, simplemente devuelve la cadena original, a diferencia de los métodos manuales de slicing que podrían fallar o ser menos claros.</li><br>
 
-                        <li><strong>Python 3.12:</strong></li>
+                                    <li>Y se añadió un Nuevo Módulo para zonas horarias, Python incluyó en su biblioteca estándar el módulo zoneinfo, que permite proporcionar soporte para las bases de datos de zonas horarias IANA.
+                                        Esto significa que ya no es necesario depender de bibliotecas de terceros (como pytz) para trabajar con información de tiempo de precisa.
+                                    </li>
+                                </ul>
+                            </p>
+                        </li>
 
-                        <li><strong>Python 3.13:</strong></li>
+                        <li><strong>Python 3.10:</strong>
+                            <p>Esta versión se lanzó el 4 de octubre de 2021, esta versión presentó la coincidencia de patrones estructurales, una característica poderosa de comparar valores contra diferentes estructuras y realizar acciones especifícas.
+                                Proporciona una nueva sintaxis para ejecutar código basado en el valor o la estructura de un objeto, similar a una declaración switch en otros lenguaje, pero mucho más potente.</p>
+                        </li>
 
-                        <li><strong>Python 3.14:</strong></li>
+                        <li><strong>Python 3.11:</strong>
+                            <p>Esta versión se lanzó el 24 de octubre de 2022, introdujo mejoras de rendimiento significativas bajo el proyecto "Faster CPython" y una característica muy útil para la depuración de código (debugging).
+                                <ul>
+                                    <li>Rendimiento Aumentado (El Proyecto Faster CPython): Esta versión hizo que el intérprete de CPython fuera notablemente más rapido, prometiendo una mejor promedio del 25% respecto a Python 3.10 y hasta un 60% más rápido en ciertos benchmarks.
+                                        Esto se logró gracias a Evaluation Adapters: Permiten que el intérprete reemplace algunas operaciones de bytecode genéricas con versiones más especializadas en tiempo de ejecución.</li><br>
+
+                                        <ul>
+                                            <li>Inlining de llamadas a funciones: Optimiza la forma en que se ejecutan las llamadas a funciones.</li><br>
+                                        </ul>
+
+                                    <li>Rastros de Errores Más Precisos (Exception Tracebacks): Una de las mejores características para la calidad de vida de los desarrolladores es que los rastros de errores ahora son mucho más específicos.
+                                        El intérprete indica la expresión que causó un error, no solo la línea completa, facilitando la depuración en líneas complejas o aniadas.</li><br>
+
+                                    <li>También se introdujo grupos de excepciones (ExceptionGroup): Permite encapsular y lanzar múltiples excepciones no relacionadas simultáneamente.
+                                        Esto es especialmente útil en código asíncrono o concurrente, donde varias tareas pueden fallar de forma independiente, y permite capturar un subconjunto específico de ellas con la nueva sintaxis except*.</li>
+                                </ul>
+                            </p>
+                        </li>
+
+                        <li><strong>Python 3.12:</strong>
+                            <p>Esta versión se lanzó el 2 de octubre de 2023, continuó con el enfoque en el rendimiento e hizo que el código con genéricos (tipado avanzado) fuera más fácil de escribir.
+                                <ul>
+                                    <li>Introdujo un soporte Nativo para Tipos Genéricos: Simplifica drásticamente la definición de clases y funciones que operan génericos, eliminando la necesidad de importar <code>TypeVar</code> de <code>typing</code> para casos sencillos.</li><br>
+
+                                    <li>Mejoras en asyncio: Se mejoró la eficiencia del módulo asíncrono asyncio en muchos aspectos, con una notable mejora en el rendimiento de hasta un 75% en ciertas operaciones relacionadas con el Event Loop.</li><br>
+
+                                    <li>Comentarios en f-String: Permite usar comentarios (iniciados con #) dentro de una f-string, siempre y cuando estén dentro de una expresión de reemplazo delimitada por las llaves ({}).</li>
+                                </ul>
+                            </p>
+                        </li>
+
+                        <li><strong>Python 3.13:</strong>
+                            <p>Esta versión se lanzó el 7 de octubre de 2024, esta versión se centra principalmente en la reestructuración interna del intérprete para lograr un rendimiento significativamente mayor, especialmente en escenarios de concurrencia.
+
+                                <ul>
+                                    <li>El cambio más ambicioso de esta versión due la eliminación del GIL (Global Interpreter Lock), El GIL ha sido un obstáculo para la ejecución paralela real del código Python ligado a la CPU.
+                                        El GIL tradicionalmente garantiza que solo un hilo de Python pudiera ejecutar bytecode a la vez, incluso en máquinas con múltiples núcleos. Esta nueva versión permitirá que los hilos de Python se ejecuten simultáneamente en diferentes núcleos del procesador.</li><br>
+
+                                    <li>Novedad Clave:La implementación se basa en el trabajo experimental del modo "nogil" y busca ser la configuración por defecto, lo que resultará en un aumento masivo de rendimiento en aplicaciones que utilizan el módulo threading para realizar cálculos intensivos.</li>
+                                </ul>
+                            </p>
+                        </li>
+
+                        <li><strong>Python 3.14:</strong>
+                            <p>Esta es la versión que tenemos actualmente (desde que publique esto), fue lanzada el 7 de octubre de 2025. En esta versión se introdujeron mejoras significativas en el rendimiento, un intérprete interactivo mejorado (PyREPL) y característica experimentales como un compilador JIT.
+                                Otras de las aportaciones más destacadas incluyen las Cadenas de Plantilla (T-String).
+                                Se introdujo el prefijo t"" para definir plantila de cadenas que, a diferencia de las f-strings, no se evalúan de forma inmediata. Esto permite a los desarrolladores manejar la sustituición de variables de forma diferida y segura, siendo una herramienta clave para evitar ataques de inyección de código en sistemas que generan SQL o HTML dinámicamente.
+                                También se añadió soporte nativo para UUID v7 en el módulo uuid. 
+                                Estos identificadores son únicos pero están ordenados cronológicamente, lo que optimiza drásticamente el rendimiento de las bases de datos al insertar y buscar registros por tiempo.
+                            </p>
+                        </li>
                     </ul>
                 </section>
             </main>
+
+            <footer>
+                <p>Proyecto de Investigación: Las Versiones de Python | 2026</p>
+            </footer>
+
         </div>
     </body>
 </html>
