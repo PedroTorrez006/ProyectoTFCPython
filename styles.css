@@ -19,6 +19,16 @@ body {
     padding: 60px 20px;
 }
 
+/* Esto hace que la imagen se adapte al contenedor */
+.version-summary img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 20px auto; /* Centra la imagen */
+    border-radius: 8px; /* Opcional: le da un toque más limpio */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Opcional: añade profundidad */
+}
+
 .timeline-overview {
     display: flex;
     justify-content: space-around;
@@ -56,6 +66,12 @@ body {
     margin: 40px;
     padding: 30px;
     border-left: 5px solid green;
+}
+
+.scroll-container {
+    width: 100%;
+    overflow-x: auto; 
+    /* Crea scroll horizontal */ 
 }
 
 /* --- DISEÑO RESPONSIVE (MÓVIL) --- */
