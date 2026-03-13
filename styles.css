@@ -58,3 +58,43 @@ body {
     border-left: 5px solid green;
 }
 
+/* --- DISEÑO RESPONSIVE (MÓVIL) --- */
+/* Cuando la pantalla es menor a 768px */
+@media (max-width: 768px) {
+
+    /* Menú vertical para que sea más facil tocar los botones */
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+        padding: 15px 0;
+    }
+
+    nav ul li.logo {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    /* El contenedor principal reduce márgenes para aprovechar el ancho */
+    .container {
+        padding: 0 10px;
+    }
+
+    /* Las tarjetas de hitos se apilan mejor */
+    .milestone-card {
+        padding: 15px;
+    }
+
+    /* La tabla se vuelve desplazable horizontalmente */
+    .table-container {
+        overflow-x: auto;
+    }
+
+    table {
+        font-size: 0.85rem;
+    }
+
+    /* Reduce el tamaño del logo en móviles */
+    .logo img {
+        height: 35px;
+    }
+}
