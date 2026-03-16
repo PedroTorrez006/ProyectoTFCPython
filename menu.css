@@ -1,6 +1,4 @@
-/* Quita márgenes y viñetas del menú */
-/* --- ESTILO DEL MENÚ --- */
-
+/* --- ESTILO DEL MENÚ UNIFICADO --- */
 nav {
     background-color: white;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -14,93 +12,54 @@ nav ul {
     list-style: none;
     margin: 0;
     padding: 0;
-    display: flex; /* Activa el diseño flexible */
-    align-items: center; /* Centra verticalmente los elementos */
+    display: flex; 
+    align-items: center;
+    justify-content: space-between; /* Logo a la izquierda, enlaces a la derecha */
 }
 
-/* El logo empuja todo lo demás a la derecha */
 nav ul li.logo {
     margin-right: auto;
 }
 
-/* Estilo del logo */
 .logo img {
-    height: 50px; /* Ajusta el tamaño según tu logo */
+    height: 50px;
     display: block;
     transition: transform 0.3s ease;
 }
 
-.logo img:hover {
-    transform: scale(1.05);
+/* Contenedor de los enlaces del menú para agruparlos */
+.nav-links-container {
+    display: flex;
+    gap: 15px;
 }
 
-/* Estilo de los enlaces */
 nav ul li a {
     text-decoration: none;
-    color: var(--text); /* Usa la variable de styles.css */
+    color: #333;
     font-weight: 600;
     padding: 10px 15px;
-    transition: color 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 nav ul li a:hover {
-    color: var(--accent); /* Usa la variable de styles.css */
+    color: var(--python-blue);
 }
 
-/* Opcional: Estilo para indicar la página activa */
-nav ul li a.active {
-    border-bottom: 3px solid var(--accent);
-    color: var(--accent);
-    background-color: rgba(255, 255, 255, 0.05);
-}
+/* --- DISEÑO RESPONSIVE PARA EL MENÚ --- */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column; /* Apila logo y enlaces */
+        gap: 15px;
+    }
 
-/* --- MENÚ DE NAVEGACIÓN --- */
+    nav ul li.logo {
+        margin-right: 0; /* Centra el logo */
+    }
 
-/* Usamos las mismas variables que definiste en tu hoja de estilos */
-.main-nav {
-    background-color: var(--dark-bg); /* Fondo oscuro profesional */
-    padding: 1rem 0;
-    position: sticky;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-}
-
-.nav-container {
-    max-width: 1000px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.nav-list {
-    list-style: none;
-    display: flex;
-    gap: 30px;
-    margin: 0;
-    padding: 0;
-}
-
-.nav-link {
-    color: white;
-    font-family: 'Helvetica', Arial, sans-serif;
-    text-decoration: none;
-    font-weight: bold;
-    padding-bottom: 5px;
-    border-bottom: 2px solid transparent; /* Efecto de subrayado sutil */
-    transition: 0.3s ease;
-}
-
-/* Color de acento al pasar el ratón usando el amarillo de Python */
-.nav-link:hover {
-    color: var(--python-yellow);
-    border-bottom: 2px solid var(--python-yellow);
-}
-
-/* Estilo para la página donde se encuentre el usuario */
-.nav-link.active {
-    color: var(--python-yellow);
-    border-bottom: 2px solid var(--python-yellow);
+    .nav-links-container {
+        flex-direction: column; /* Apila los enlaces uno sobre otro */
+        width: 100%;
+        text-align: center;
+        gap: 5px;
+    }
 }
