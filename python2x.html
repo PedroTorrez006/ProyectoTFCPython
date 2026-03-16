@@ -33,7 +33,32 @@
                             <p>Esta versión introdujo características que modernizaron la gestión de datos y memoria:
                                 <ul>
                                     <li>List Comprehensions: Una sintaxis compacta para crear listas basada en la notación matemática de conjuntos. Permitió escribir código más legible y eficiente que los bucles tradicionales.</li><br>
+                                    
+                                    <div class="code-box">
+<pre><code>numeros = [1, 2, 3, 4, 5, 6]
+
+# En lugar de usar un bucle for, hacemos lo siguiente
+cuadrados_pares = [n**2 for n in numeros if n % 2 == 0]
+
+print(cuadrados_pares)
+# Resultado: [4, 16, 36]</code></pre>
+                                    </div>
+                                    
                                     <li>Garbage Collector (Detección de ciclos): A diferencia de la serie 1 que solo usaba "conteo de referencias", la serie 2 añadió un recolector de basura capaz de identificar y limpiar objetos que se referenciaban entre sí de forma circular, evitando fugas de memoria críticas.</li>
+
+                                    <div class="code-box">
+<pre><code>import styles
+                                            
+objeto = [1,2,3] # El contador de referencias es 1
+otro = objetos # El contador ahora es 2
+
+# Borramos la referencia, el contador vuelve a 1
+del objeto 
+                                            
+# El contador llega a 0, Python libera la memoria
+del otro</code></pre>
+                                    </div>
+                                    
                                 </ul>
                             </p>
                         </li>
@@ -66,6 +91,43 @@
                             <p>Esta versión se lanzó el 30 de noviembre de 2004, esta versión amplió las capacidades del lenguaje al introducir los decoradores de funciones que son funciones que modifican el comportamiento de otras funciones, esto sería una manera de añadir funcionalidad a una función existente sin modificar su código interno.
                                 También se mejoró el rendimiento del intérprete, se añadió el tipo de datos set de forma oficial y se modernizaron varios módulos estándares, y se incluyó la posibilidad de utilizar generadores como iteradores, haciendo más flexible la programación funcional y orientada a objetos.
                             </p>
+
+                            <p>Ahora voy a hacer un ejemplo para que se entienda mejor.
+                                Imagina que quieres que cada vez que se llame a una función, se imprima "¡Hola!" al empezar y "¡Adiós!" al terminar.
+                            </p>
+
+                            <div class="code-box">
+<pre><code>def saludo(func):
+    # Esta es la función decoradora.
+    def envoltura():
+    # Esta es la función que envuelve a la original.
+    print("¡Hola! La función va a empezar...")
+    # Lógica ANTES de la función original
+
+    # Llama a la función original que fue pasada como argumento
+    func()
+    
+    print("¡Adiós! La función ha terminado.")
+    # Lógica Después de la función original
+
+    return envoltura</code></pre>
+                            </div>
+
+                            <p>Después aplicamos una función y aplicamos el decorador @saludo</p>
+
+                            <div class="code-box">
+<pre><code>@saludo
+def preparar_cafe():
+    # Simula el proceso central de preparar café.
+    print("-> Poniendo agua y café en la cafetera...")
+    print("-> Esperando que se prepare...")
+
+# Llama a la función
+preparar_cafe()</code></pre>
+                            </div>
+                            
+                            <p>Esto sería una manera de añadir funcionalidad a una función existente sin modificar su código interno.</p>
+                        
                         </li>
 
                         <li><strong>Python 2.5:</strong>
@@ -77,6 +139,50 @@
                                 También, se ampliaron las capacidades de los generadores, que ahora podían recibir valores mediante send(), lo que abrió el camino hacia la programación corutina.
                                 Fue una versión que combinó claridad, control y eficiencia.
                             </p>
+
+                            <p>Aquí muestro un ejemplo de como se aplicaria: </p>
+
+                            <div class="code-box">
+<pre><code>def division_segura(a, b):
+    try:
+        # Bloque 'try': Intenta ejecutar esta operación.
+        print("Intentando dividir {a} entre {b}...")
+        resultado = a / b
+
+    except ZeroDivisionError:
+        # Bloque 'except' para un error específico (división por cero)
+        print("¡Error! No se puede dividir por cero (ZeroDivisionError).")
+        resultado = none
+    
+    except TypeError:
+        # Bloque 'except' para otro error específico (tipos de datos incorrectos)
+        print("¡Error! Asegúrate de usar números para la división (TypeError).")
+        resultado = None
+    
+    else:
+        # Bloque 'else': Se ejecuta SOLAMENTE si NO hubo excepciones en el 'try'
+        print("La división se completó con éxito. Resultado: {resultado}")
+        return resultado
+    
+    finally:
+        # Bloque 'finally': Se ejecuta SIEMPRE, haya habido excepción o no
+        print("--- Proceso de división finalizado. ---\n")
+        # En una aplicación real, se usaría para cerrar archivos o liberar recursos.
+
+# --- Pruebas del ejemplo ---
+# 1. Caso de éxito (ejecuta el try y else)
+print(">>> Caso 1: División exitosa")
+division_segura(10, 2)
+
+# 2. Caso de excepción (ZeroDivisionError)
+print(">>> Caso 2: Error de división por cero")
+division_segura(10, 0)
+
+# 3. Caso de otra excepción (TypeError)
+print(">>> Caso 3: Error de tipo de dato")
+division_segura(10, "a")</code></pre>
+
+                            </div>
                         </li>
 
                         <li><strong>Python 2.6:</strong>

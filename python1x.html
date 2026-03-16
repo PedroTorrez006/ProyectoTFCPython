@@ -39,6 +39,20 @@
                                 
                                 <li>map(): Se usa cuando queremos aplicar la misma operación a cada elemento de una lista. El resultado será una nueva lista con el mismo número de elementos, pero todos habrán sido modificados o "mapeados".</li>
                             </ul>
+                            
+                        <p>Ahora te voy a mostrar un ejemplo para que quede más claro, Imagina que tienes una lista de precios y quieres aplicarle un descuento del 10 % sólo a los productos que valen más de 100 euros, para ello tenemos 2 funciones que nos permite hacer eso.</p>
+
+                        <div class="code-box">
+<pre><code>precios = [50, 120, 250, 80, 200]
+# Filtramos los mayores a 100
+caros = filter(lambda p: p > 100, precios)
+
+# Aplicamos el descuetno del 10% (multiplicar por 0.9)
+con_descuento = map(lambda p: p * 0.9, caros)
+
+print(list(con_descuento))
+# Resultado: [108.0, 225.0, 180.0]</code></pre>
+                        </div>
                     </p></li>
 
                     <li><strong>Python 1.1:</strong>
@@ -93,12 +107,25 @@
                         </p>
 
                         <p>Esto supone una mejora para la legibilidad, también permite cambiar el orden de los argumentos y facilita el uso de valores predeterminados, haciendo el código más claro y flexible.</p>
+
+                        <p>Aquí te muestro un ejemplo de su uso:</p>
+
+                        <div class="code-box">            
+<pre><code>def describir_persona(nombre, edad, ciudad="Madrid"):
+    print(f"{nombre} tiene {edad} años y vive en {ciudad}.")
+
+# Usando argumentos de palabra clave
+describir_persona(edad = 30, nombre = "Ana")
+# Salida: Ana tiene 30 años y vive en Madrid.</code></pre>
+                         </div>
+
+                        <p>La llamada describir_persona(edad = 30, nombre = "Ana") funciona porque Python identifica los datos por su nombre y rellena el hueco faltante (ciudad) con el valor que tiene por defecto, en este cado Madrid.</p>
                     </li>
 
                     <li><strong>Python 1.5:</strong>
                         <p>Esta versión fue lanzada en 1997, es considerada la versión que puso a Python en el mapa empresarial.
                             Introdujo el módulo re, que es un módulo de la biblioteca estándar que permite trabajar con expresiones regulares (RegEx) para buscar, validar, manipular y extraer patrones específicos de texto dentro de cadenas. 
-                            Estas se importan con el import re y facilita las tareas como la validación de correos electrónicos, extracción de números o situación de texto.
+                            Estas se importan con el import re y facilita las tareas como la validación de correos electrónicos, extracción de números o situación de texto.</p>
 
                             <ul>
                                 <li>Una característica clave del módulo es que usa patrones de búsqueda, utilizando sintaxis de expresiones regulares para definir qué busca, incluyendo literales y metacaracteres.</li><br>
@@ -113,12 +140,23 @@
                                     </ul>
                                 
                                 </li>
-                            </ul><br>
+                            </ul>
+
+                            <p>Ahora voy a mostrar un ejemplo básico de su uso:</p>
+
+                            <div class="code-box">
+<pre><code>import re
+texto = "El código es 12345 y el precio es 50."
+# Buscar secuencias de números
+numeros = re.findall(r'\d+', texto)
+print(numeros)
+# Salida: ['12345', '50']</code></pre>
+                            </div>
                             
-                            También me gustaría destacar una versión que salió durante la versión 1.5, siendo la versión 1.5.2, esta versión se lanzó en 1999 fue la versión más estable y durarera de toda la serie 1.
+                            <p>También me gustaría destacar una versión que salió durante la versión 1.5, siendo la versión 1.5.2, esta versión se lanzó en 1999 fue la versión más estable y durarera de toda la serie 1.
                             Fue tan robusta que muchas distribuciones de Linux (como Red Hat 6.2) la mantuvieron como su lenguaje pro defecto durante años, incluso cuando la versión 2.0 ya existía. 
-                            Se centro casi exclusivamente en la corrección de errores y en hacer la biblioteca estándar "a prueba de balas".
-                        </p>
+                            Se centro casi exclusivamente en la corrección de errores y en hacer la biblioteca estándar "a prueba de balas".</p>
+                        
                     </li>
 
                     <li><strong>Python 1.6:</strong>

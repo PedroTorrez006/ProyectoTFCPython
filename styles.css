@@ -4,6 +4,7 @@
     --python-yellow: #ffd43b;
     --dark-bg: #2c3e50;
     --light-gray: #f4f4f4;
+    --dark-blue: #2a5a82;
 }
 
 body {
@@ -73,7 +74,7 @@ body {
 }
 
 .btn:hover {
-    background: #2a5a82;
+    background: var(--dark-blue);
 }
 
 .ods-impact {
@@ -88,6 +89,40 @@ body {
     width: 100%;
     overflow-x: auto; 
     /* Crea scroll horizontal */ 
+}
+
+.code-box {
+    background-color: var(--dark-blue);
+    color: var(--light-gray);
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+    overflow-x: hidden;
+    width: 100%;
+    box-sizing: border-box;
+    /* FUERZA ALINEACIÓN A LA IZQUIERDA */
+    text-align: left; 
+}
+
+pre {
+    margin: 0;
+    padding: 0;
+    /* FUERZA ALINEACIÓN A LA IZQUIERDA */
+    text-align: left;
+    white-space: pre-wrap;
+    word-break: break-all;
+    display: block;
+}
+
+code {
+    display: block;
+    margin: 0;
+    padding: 0;
+    /* FUERZA ALINEACIÓN A LA IZQUIERDA */
+    text-align: left;
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    font-size: 0.95rem;
+    line-height: 1.5;
 }
 
 /* --- DISEÑO RESPONSIVE (MÓVIL) --- */
@@ -128,5 +163,10 @@ body {
     /* Reduce el tamaño del logo en móviles */
     .logo img {
         height: 35px;
+    }
+    
+    pre {
+        font-size: 0.8rem;
+        padding: 10px;
     }
 }

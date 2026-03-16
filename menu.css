@@ -27,6 +27,10 @@ nav ul li.logo {
     transition: transform 0.3s ease;
 }
 
+.logo img:hover {
+    transform: scale(1.05);
+}
+
 /* Contenedor de los enlaces del menú para agruparlos */
 .nav-links-container {
     display: flex;

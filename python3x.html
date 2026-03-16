@@ -45,6 +45,19 @@
                                     <li>División Lógica: División Lógica:</strong> Se estandarizó que la división entre enteros (/) devuelva siempre un decimal, moviendo la división entera al operador (//).</li>
                                 </ul>
                             </p>
+
+                            <p>También quiero destacar un cambio muy importante y ese es el de la función print(), la declaración de este paso de estar sin parentesis "print" a pasar con parentesis "print()", esto se hizo para aumentar la flexibilidad y legibilidad del lenguaje.
+                                Aquí muestro unos ejemplos de declaración.</p>
+
+                            <div class="code-box">
+<pre><code>Old: print "La respuesta es", 2*2
+New: print("La respuesta es", 2*2)
+
+# La coma final suprime el salto de línea
+Old: print x,
+# Agrega un espacio en lugar de un salto de línea.
+New: print(x, end="")</code></pre>
+                            </div>
                         </li>
 
                         <li><strong>Python 3.1:</strong>
@@ -61,12 +74,81 @@
                                 Se introdujo un nuevo módulo para el análisis de la línea de comandos, argparse, para superar las limitaciones de optparse que no brindaba soporte para argumentos posicionales, sub comandos, opciones requeridas y otros patrones comune para especificar y validar opciones.
                                 También se añadió otras utilidades en la biblioteca estándar, incorporó soporte mejorado para SSL/TLS y trajo Optimizaciones en el intérprete y en la implementación del recolector/GIL que beneficiaron el rendimiento en ciertas cargas.
                             </p>
+
+                            <p>Aquí muestro un ejemplo: Imagina que deseas crear un programa llamado saludo.py que pueda ejecutarse así:
+
+                                python saludo.py John (saludo simple)
+                                python saludo.py Jane --formal (saludo formal)</p>
+
+                            <div class="code-box">
+<pre><code>import argparse
+
+def main():
+    # 1. Crear el objetivo ArgumentParser
+    # El objetivo parser contendrá toda la información necesaria para analizar
+    # La línea de comandos
+    parser = argparse.ArgumentParser(
+        description = "Un script simple para saludar a un usuario.",
+        epilog = "¡Gracias por usar el programa de saludo!"
+    )
+
+    # 2. Agregar Argumentos
+    # Argumento Posicional (Obligatorio)
+    parser.add_argument(
+        'nombre',
+        type = str,
+        help = 'El nombre de la persona a saludar.'
+    )
+
+    # Argumento Opcional (Flag o Bandera)
+    # action = 'store_true' significa que si se incluye la bandera, su valor es True.
+    # Y si se omite, su valor por defecto es False.
+    parser.add_argument(
+        '--formal',
+        action = 'store_true',
+        help = 'Si se incluye, el saludo será formal ("Estimado/a").'
+    )
+    
+    # 3. Analizar los argumentos
+    # Esto examina la línea de comandos, convierte los argumentos a los tipos
+    # especificados, y los coloca como atributos del objeto 'args'.
+    args = parser.parse_args()
+
+    # 4. Usa los argumentos
+    if args.formal:
+        saludo = "Estimado/a {args.nombre}, ¡bienvenido/a al programa!"
+
+    else:
+        saludo = "Hola, {args.nombre}. ¡Qué gusto verte!"
+
+    print(saludo)
+
+if __name__ == "__main__":
+    main()</code></pre>
+                            </div>
                         </li>
 
                         <li><strong>Python 3.3:</strong>
                             <p>Esta versión se lanzo el 29 de septiembre de 2012, esta versión añadio varias mejoras de diseño importantes como la expresión <code>yield from</code>, permitiendo que un generador delegue parte de sus operaciones a otro generador.
                             Esto permite tomar una sección de código que contenga la palabra yield y ubicarla en otro generador.
                             Además, el sub generador puede regresar un valor y ese valor se pone a disposición del generador que se delega.
+                            </p>
+
+                            <p>Aquí muestro un ejemplo de como se aplicaria:</p>
+
+                            <div class="code-box">
+<pre><code>def mi_generador():
+    print("Iniciar el generador")
+    yield 1
+    print("Después del primer yield")
+    yield 2
+    print("Después del segundo yield")
+</code></pre>
+                            </div>
+
+                            <p>Cuando llama al generador, el código que está dentro de la función no se ejecuta de inmediato. Simplemente crea y devuelve un objeto generador.
+                            La primera vez que solicitas un valor, el código dentro de la función se ejecuta hasta que encuentra el primer yield 1. La siguiente vez que se solicita, la función reanuda la ejecución desde la línea siguiente al último yield y así hasta la última.
+                            Esta mejora sirvió para trabajar con generadores de forma má limpia, una representación de cadenas más flexibles que eliminó la distinción entre “wide ” y “narrow”.
                             </p>
                         </li>
 
