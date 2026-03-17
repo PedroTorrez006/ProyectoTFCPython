@@ -160,30 +160,104 @@ if __name__ == "__main__":
 
                         <li><strong>Python 3.5:</strong>
                             <p>Esta versión se lanzó el 13 de septiembre de 2015, esta versión destacó en introducir nuevos aspectos.
-                                En la sintaxis introdujo los siguientes aspectos:
+                                En la sintaxis introdujo los siguientes aspectos:</p>
                                 <ul>
                                     <li>Mejoró enormemente el soporte de la programación asíncrona al agregar objetos aguardables, funciones corrutina, iteraciones asincrónicas y gestores asincrónicos de contexto.</li><br>
+
+                                    <div class="code-box">
+<pre><code>import asyncio
+
+async def esperar (segundos):
+    # 'await' pausa esta corutina para que el Event Loop pueda ejecutar otras
+    await asyncio.sleep(segundos)
+    return "Esperé {segundos} segundos."
+
+async def main():
+    # 'async def' define una corutina
+    print("Inicio la espera...")
+    
+    # Ejecuta el resultado y esperar el resultado
+    resultado = await esperar(1)
+    print(resultado)
+    print("Fin.")
+
+# asyncio.run(main())
+# Forma moderna de ejecutarlo</code></pre>
+                                    </div>
+                                
                                     <li>Además se amplió la capacidad de usar los operadores de desempaquetado * (para iterables) y ** (para diccionarios) en más contextos, como en literales de listas.</li>
+
+                                    <div class="code-box">
+<pre><code>lista_1 = [1, 2]
+lista_2 = [3, 4]
+# Antes: lista_total = lista_1 + lista_2
+lista_total = [*lista_1, *lista_2, 5]
+# Resultado : [1, 2, 3, 4, 5]
+
+d1 = {'a': 1}
+d2 = {'b': 2}
+d_total = {**d1, **d2, 'c' : 3}
+# Resultado: {'a': 1, 'b': 2, 'c': 3}</code></pre>
+                                    </div>
                                 </ul>
-                            </p>
                         </li>
 
                         <li><strong>Python 3.6:</strong>
-                            <p>Esta versión se lanzó el 23 de diciembre de 2016, esta versión se caracterizo por mejorar la productividad al introducir nuevas formas de fomentar cadenas y avanzar en la adopción del tipado estático opcional.
+                            <p>Esta versión se lanzó el 23 de diciembre de 2016, esta versión se caracterizo por mejorar la productividad al introducir nuevas formas de fomentar cadenas y avanzar en la adopción del tipado estático opcional.</p>
                                 <ul>
-                                    <li>Cadenas Literales Formateadas (f-Strings): Las "f-strings" proporcionan una sintaxis concisa, eficiente y legible para incrustar expresiones de Python dentro de cadenas de texto. Son la forma preferida de formateo de cadenas en la actualidad.</li><br>
+                                    <li>Cadenas Literales Formateadas (f-Strings): Las "f-strings" proporcionan una sintaxis concisa, eficiente y legible para incrustar expresiones de Python dentro de cadenas de texto. Son la forma preferida de formateo de cadenas en la actualidad.</li>
+                                    
+                                    <div class="code-box">
+<pre><code>nombre = "Ana"
+saldo = 123.456
+
+# La 'f' inicial permite incrustar expresiones entre llaves {}
+mensaje = "Hola {nombre.upper{}}. Tu saldo es ${saldo:.2f}"
+# Resultado: "Hola, Ana. Tu saldo es $123.46"</code></pre>
+                                    </div>
                                     <li>También introdujo las Anotaciones de Tipo para Variables que estas permitieron anotar el tipo de las variables dentro del cuerpo de la función o módulo,  no solo en los parámetros y valores de retorno de la función. 
                                         Esto ayuda a herramientas de análisis de código (como Mypy) a realizar una mejor comprobación estática.</li>
+
+                                    <div class="code-box">
+<pre><code>from typing import List
+
+# Anotación de tipo para una variable local
+datos: List[int] = [1, 2, 3]
+
+# Una constante con tipo
+LIMITE_INTENTOS: int = 5
+</code></pre>
+                                    </div>
                                 </ul>
-                            </p>
                         </li>
 
                         <li><strong>Python 3.7:</strong>
-                            <p>Esta versión se lanzó el 27 de junio de 2018, introdujo una característica que elimina la necesidad de escribir mucho código repetitivo (boilerplate) en clases que solo se usan para almacenar datos.
+                            <p>Esta versión se lanzó el 27 de junio de 2018, introdujo una característica que elimina la necesidad de escribir mucho código repetitivo (boilerplate) en clases que solo se usan para almacenar datos.</p>
                                 <ul>
                                     <li>Una de las innovaciones que trajo fue las Clases de Datos, El decorador @dataclass permite crear clases con métodos comunes como __init__, __repr__ y __eq__ generados automáticamente, haciéndolas ideales para modelar estructuras de datos.</li>
                                 </ul>
-                            </p>
+
+                                <div class="code-box">
+<pre><code>from dataclasses import daraclass
+
+@dataclass
+class Punto:
+    # Los campos son inferidos del tipo de dato anotado
+    x: int
+    y: int = 0
+    # Se puede definir un valor por defecto
+
+# Uso:
+# Llama al __init__ autogenerado (x=10, y=0)
+p1 = Punto(10)
+p2 = Punto(0, 10)
+
+#True (Usa el __eq__ autogenerado)
+print(p1 == p2)
+
+# Punto (x=10, y=0) (Usa el __repr__ autogenerado)
+print(p1)</code></pre>
+                                </div>
                         </li>
 
                         <li><strong>Python 3.8:</strong>
@@ -192,6 +266,19 @@ if __name__ == "__main__":
                                 El operador morsa permite asignar un valor a una variable como parte de una expresión.
                                 Esto es útil para evitar recalcular un valor o para hacer más compactas ciertas comprobaciones de <code>if</code> o <code>while</code>.
                             </p>
+
+                            <div class="code-box">
+<pre><code># Sin el Operador Morsa (típico: calcular, luego comprobar)
+# linea = archivo.readline()
+# while linea:
+#   procesar(linea)
+#   linea = archivo.readline()
+
+# Con el Operador Morsa (calcular y comprobar en el 'while')
+# La variable 'linea' se asigna y se comprueba en la misma expresión
+while (linea := archivo.readline()):
+    procesar(linea)</code></pre>
+                            </div>
                         </li>
 
                         <li><strong>Python 3.9:</strong>
@@ -203,22 +290,80 @@ if __name__ == "__main__":
                                         <li>Fusión ( | ), Esté operador crea un nuevo diccionario a partir de dos o más.
                                             Si hay claves duplicadas, el valor del operador de la derecha se mantiene.</li><br>
 
-                                        <li>Actualización ( |= ), Esté operador modifica el diccionario original con las claves y valores de la derecha.</li><br>
+                                        <li>Actualización ( |= ), Esté operador modifica el diccionario original con las claves y valores de la derecha.</li>
+                                        <p>Aquí te dejo un ejemplo de su uso:</p>
+
+                                        <div class="code-box">
+<pre><code>dias_semana = {"L": "Lunes", "M": "Martes"}
+dias_finde = {"J": "Jueves", "V": "Viernes", "S": "Sábado"}
+
+# 1. Fusión (crea un nuevo diccionario)
+todos_dias = dias_semana | dias_finde
+print(todos_dias)
+# {"L": "Lunes", "M": "Martes", "J": "Jueves", "V": "Viernes", "S": "Sábado"}
+
+# 2. Actualización (modifica el diccionario original)
+dias_semana |= {"X": "Miércoles"}
+print(dias_semana)
+# {"L": "Lunes", "M": "Martes", "X": "Miércoles"}</code></pre>
+                                        </div>
                                     </ul>
 
                                     <li>También se añadieron Nuevos Métodos para cadenas de texto (removeprefix y removesuffix), donde se añadieron dos métodos muy solicitados a las cadenas (str) para eliminar prefijos y sufijos de manera explícita y segura. 
-                                        Si el prefijo o sufijo no está presente, simplemente devuelve la cadena original, a diferencia de los métodos manuales de slicing que podrían fallar o ser menos claros.</li><br>
+                                        Si el prefijo o sufijo no está presente, simplemente devuelve la cadena original, a diferencia de los métodos manuales de slicing que podrían fallar o ser menos claros.</li>
+                                    <p>Aquí te dejo un ejemplo de su uso:</p>
+
+                                    <div class="code-box">
+<pre><code>cadena_url = "https://www.ejemplo.com/recurso"
+nombre_archivo = "documento.pdf.bak"
+
+# Elimina el prefijo si existe
+sin_protocolo = cadena_url.removeprefix("https://")
+print(sin_protocolo)
+# www.ejemplo.com/recurso
+
+# Elimina el sufijo si existe
+sin_backup = nombre_archivo.removesuffix(".bak")
+print(sin_backup)
+# documento.pdf</code></pre>
+                                    </div>                     
 
                                     <li>Y se añadió un Nuevo Módulo para zonas horarias, Python incluyó en su biblioteca estándar el módulo zoneinfo, que permite proporcionar soporte para las bases de datos de zonas horarias IANA.
-                                        Esto significa que ya no es necesario depender de bibliotecas de terceros (como pytz) para trabajar con información de tiempo de precisa.
-                                    </li>
+                                        Esto significa que ya no es necesario depender de bibliotecas de terceros (como pytz) para trabajar con información de tiempo de precisa.</li>
+                                    <p>Aquí te dejo un ejemplo de su uso:</p>
+
+                                    <div class="code-box">
+<pre><code>from zoneinfo import Zoneinfo
+from datetime import datetime
+
+# Definir una fecha y hora con información de zona horaria IANA
+dt = datetime(2025, 12, 4, 15, 0, tzinfo=ZoneInfo("Europe/Madrid"))
+print(dt)
+# 2025-12-04 15:00:00+01:01</code></pre>
+                                    </div>
                                 </ul>
                             </p>
                         </li>
 
                         <li><strong>Python 3.10:</strong>
                             <p>Esta versión se lanzó el 4 de octubre de 2021, esta versión presentó la coincidencia de patrones estructurales, una característica poderosa de comparar valores contra diferentes estructuras y realizar acciones especifícas.
-                                Proporciona una nueva sintaxis para ejecutar código basado en el valor o la estructura de un objeto, similar a una declaración switch en otros lenguaje, pero mucho más potente.</p>
+                                Proporciona una nueva sintaxis para ejecutar código basado en el valor o la estructura de un objeto, similar a una declaración switch en otros lenguaje, pero mucho más potente.
+                                Aquí te dejo un ejemplo:</p>
+                            
+                            <div class="code-box">
+<pre><code>punto = (0, 0)
+# Puede ser una tupla
+
+match punto
+    case (0, 0): # Caso 1: Origen
+        print("El punto está en el origen.")
+    case (x, 0): # Caso 2: Patrón con variable 'x' (en el eje X)
+        print("El punto está en el eje X, en x={x}.")
+    case (x, y) if x == y # Caso 3: Patrón con condición
+        print("El punto está en la diagonal (x=y).")
+    case _: #Caso 'default' (similar al 'else')
+        print("Otro punto cualquiera.")</code></pre>
+                            </div>
                         </li>
 
                         <li><strong>Python 3.11:</strong>
@@ -232,10 +377,50 @@ if __name__ == "__main__":
                                         </ul>
 
                                     <li>Rastros de Errores Más Precisos (Exception Tracebacks): Una de las mejores características para la calidad de vida de los desarrolladores es que los rastros de errores ahora son mucho más específicos.
-                                        El intérprete indica la expresión que causó un error, no solo la línea completa, facilitando la depuración en líneas complejas o aniadas.</li><br>
+                                        El intérprete indica la expresión que causó un error, no solo la línea completa, facilitando la depuración en líneas complejas o aniadas.
+                                        Aquí dejo un ejemplo:</li>
+
+                                    <div class="code-box">
+<pre><code>def obtener_nombre(usuario):
+    return usuario.nombre
+
+data = {"id": 1}
+
+# En 3.10, solo sabrías que falló esta línea.
+# En 3.11, el error apunta directamente a '.nombre'.
+# Error: AttributeError: 'dict' object has no attribute 'nombre'
+
+# Traceback de 3.11 (muestra con ^ dónde falló):
+# ... line 4, in <module>
+#     obtener_nombre(data)
+#     │              └─── dict object
+#     └── obtener_nombre
+# 
+# ... line 2, in obtener_nombre
+#     return usuario.nombre
+#            ^^^^^^^^^^^^^</code></pre>
+                                    </div>
 
                                     <li>También se introdujo grupos de excepciones (ExceptionGroup): Permite encapsular y lanzar múltiples excepciones no relacionadas simultáneamente.
-                                        Esto es especialmente útil en código asíncrono o concurrente, donde varias tareas pueden fallar de forma independiente, y permite capturar un subconjunto específico de ellas con la nueva sintaxis except*.</li>
+                                        Esto es especialmente útil en código asíncrono o concurrente, donde varias tareas pueden fallar de forma independiente, y permite capturar un subconjunto específico de ellas con la nueva sintaxis except*.
+                                        Aquí muestro un ejemplo de su uso:</li>
+                                    
+                                    <div class="code-box">
+<pre><code>class ErrorRed(Exception): pass
+class ErrorArchivo(Exception): pass
+
+try:
+    # Lanza un grupo de errores
+    raise ExceptionGroup`(
+        "Errores de proceso",
+        [ErrorRed("Fallo en DNS"), ErrorArchivo("Archivo no encontrado")]
+    )
+# except* permite capturar errores especifícos dentro del grupo
+except* ErrorRed as eg:
+    print("Error de red capturado: {eg}")
+except* ErrorArchivo as eg:
+    print("Error de archivo capturado: {eg}")</code></pre>
+                                    </div>
                                 </ul>
                             </p>
                         </li>
@@ -243,11 +428,30 @@ if __name__ == "__main__":
                         <li><strong>Python 3.12:</strong>
                             <p>Esta versión se lanzó el 2 de octubre de 2023, continuó con el enfoque en el rendimiento e hizo que el código con genéricos (tipado avanzado) fuera más fácil de escribir.
                                 <ul>
-                                    <li>Introdujo un soporte Nativo para Tipos Genéricos: Simplifica drásticamente la definición de clases y funciones que operan génericos, eliminando la necesidad de importar <code>TypeVar</code> de <code>typing</code> para casos sencillos.</li><br>
+                                    <li>Introdujo un soporte Nativo para Tipos Genéricos: Simplifica drásticamente la definición de clases y funciones que operan génericos, eliminando la necesidad de importar <code>TypeVar</code> de <code>typing</code> para casos sencillos.</li>
+
+                                    <div class="code-box">
+<pre><code># Antes (Python 3.11):
+# from tying import TypeVar, Callable
+# T = TypeVar('T')
+# def duplicar(x: T) -> T: ...
+
+# Ahora (Python 3.12): Sintaxis simplificada
+def duplicar[T](x: T) -> T:
+    # La función es genérica en el tipo T.
+    return x * 2</code></pre>
+                                    </div>
 
                                     <li>Mejoras en asyncio: Se mejoró la eficiencia del módulo asíncrono asyncio en muchos aspectos, con una notable mejora en el rendimiento de hasta un 75% en ciertas operaciones relacionadas con el Event Loop.</li><br>
 
                                     <li>Comentarios en f-String: Permite usar comentarios (iniciados con #) dentro de una f-string, siempre y cuando estén dentro de una expresión de reemplazo delimitada por las llaves ({}).</li>
+
+                                    <div class="code-box">
+<pre><code>resultado = 42
+mensaje = "El resultado final es: {resultado # Esto es un comentario + 1 # Añade uno}"
+
+print(mensaje) # El resultado final es: 43</code></pre>
+                                    </div>
                                 </ul>
                             </p>
                         </li>
@@ -271,6 +475,19 @@ if __name__ == "__main__":
                                 También se añadió soporte nativo para UUID v7 en el módulo uuid. 
                                 Estos identificadores son únicos pero están ordenados cronológicamente, lo que optimiza drásticamente el rendimiento de las bases de datos al insertar y buscar registros por tiempo.
                             </p>
+
+                            <p>Aquí muestro un ejemplo de uso de los T-Strings:</p>
+
+                            <div class="code-box">
+<pre><code># Definición de una plantilla (no se evalúa al momento)
+nombre = "Usuario"
+plantilla = "Bienvenido, {nombre}"
+
+# La evaluación puede ocurrir más tarde con validaciones adicionales
+print(plantilla)
+# Salida: Bienvenido, Usuario
+</code></pre>
+                            </div>
                         </li>
                     </ul>
                 </section>
