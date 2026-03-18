@@ -22,8 +22,9 @@
         <main class="content-container">
             <section class="text-block">
                 <h2>El nacimiento del lenguaje</h2>
-                <p>Fue lanzada a principio de los años 90, la serie 1 de Python no fue solo un experimento, sino la respuesta a la necesidad de un lenguaje que fuera legible y potente a la vez. 
-                    En esta etapa se establecieron las bases que hoy definen a Python como un lenguaje de alto nivel.</p>
+                <p>Fue lanzada a principio de los años 90, Python 1.x representa mucho más que las primeras versiones de un lenguaje de programación; constituye el nacimiento de una forma distinta de entender el desarrollo de software.
+                    Desde sus inicios, Python fue concebido con un objetivo claro: ofrecer una sintaxis sencilla sin renunciar a la potencia, permitiendo a ls programadores centrarse en la lógica del problema en lugar de la complejidad del lenguaje.
+                </p>
             </section>
 
             <section>
@@ -31,9 +32,12 @@
                 
                 <ul>
                     <li><strong>Python 1.0:</strong> 
-                        <p>Esta versión es histórica porque fue la que introdujo las herramientas de programación funcional.
-                            Estas permitieron procesar colecciones de forma elegante y directa. 
-                            Un ejemplo sería el siguiente:
+                        <p>Esta versión es histórica porque fue la que marcó el inicio de esta filosofía introduciendo elementos de programación funcional como las funciones map() y filter().
+                            Estas herramientas permitían procesar colecciones de datos de manera más abstracta, evitando el uso de bucles explícitos y reduciendo la cantidad de código necesario.
+                            Su importancia radica en que introducen una forma más declarativa de programar, donde el desarrollador expresa qué quiere hacer con los datos en lugar de detallar paso a paso cómo hacerlo.
+                            Esto no solo mejora la legibilidad, sino que también reduce errores y favorece la reutilización del código.
+                            Un ejemplo sería el siguiente:</p>
+
                             <ul>
                                 <li>filter(): Se usa cuando queremos filtrar elementos basados en una condición. A diferencia de map, el resultado puede tener menos elementos que la lista origina, pero los que quedan están intactos.</li><br>
                                 
@@ -53,19 +57,23 @@ con_descuento = map(lambda p: p * 0.9, caros)
 print(list(con_descuento))
 # Resultado: [108.0, 225.0, 180.0]</code></pre>
                         </div>
-                    </p></li>
+                    </li>
 
                     <li><strong>Python 1.1:</strong>
-                        <p>Esta versión fue lanzada poco después de la 1.0, Si bien esta versión no introdujo cambios disruptivos en la sintaxis, su valor estratégico fue fundamental para el crecimiento del ecosistema. 
-                            Python 1.1 fue la primera versión que logró una adaptación robusta para MacOS, lo que permitió romper la dependencia exclusiva con el entorno Unix/Linux. </p>
+                        <p>Esta versión fue lanzada poco después de la 1.0, esta versión se centró tanto en nuevas características del lenguaje como en su expansión y accesibilidad.
+                            La adaptación a MacOS fue un paso clave, ya que permitió que Python dejará de estar ligado casi exclusivamente a entornos Unix.
+                            Este cambio tuvo un impacto significativo en su adopción, facilitando su uso en contextos educativos y personales, y ampliando la comunidad de desarrolladores.
+                            En este punto, Python empieza a dejar de ser una herramienta académica para convertirse en una opción viable en distintos entornos.</p>
 
                         <p>Este hito fue determinante para la adopción temprana del lenguaje en entornos de desarrollo fuera de la academia y centros de investigación científica, facilitando su integración en arquitecturas de escritorio heterogéneas.</p>
                     </li>
                         
                     <li><strong>Python 1.2:</strong>
                         <p>Esta versión se hizo pública en 1995. 
-                            Esta versión se centró en la madurez del sistema como herramienta de producción. 
-                            Se realizaron ajustes significativos en el sistema de licencias y se amplió el catálogo de la biblioteca estándar. </p>
+                            Esta versión supuso un paso importante hacia la madurez del lenguaje.
+                            Las mejoras en la gestión de memoria hicieron que la ejecución de programad fueran más estables, reduciendo errores críticos como los fallos inesperados en ejecución.
+                            Además, la ampliación de la biblioteca estándar proporcionó a los desarrolladores más herramientas listas para usar, disminuyendo la necesidad de implementar soluciones desde cero.
+                            Este conjunto de mejoras consolidó a Python como una opción fiable para proyectos más grandes y complejos.</p>
                         
                         <p>Desde el punto de vista del intérprete, la mejora crítica radicó en la gestión de memoria interna; se refinaron los mecanismos de asignación y liberación, logrando una mayor estabilidad en la ejecución de scripts de larga duración y reduciendo drásticamente los errores de cierre inesperado (segmentation faults).</p>
                     </li>
@@ -101,14 +109,16 @@ print(list(con_descuento))
                     </li>
 
                     <li><strong>Python 1.4:</strong>
-                        <p>Esta versión salio en 1996. 
-                            Lo que caracteriza esta versión es por ser una versión de gran peso debido a que introdujo los Argumentos de Palabra Clave (Keyword Arguments). 
-                            Qué permiten pasar valores a funciones especificando el nombre del parámetro (nombre = valor) al momento de llamarlas. 
+                        <p>Esta versión salio en 1996.
+                            Esta versión introdujo una característica fundamental para la legibilidad del código: los argumentos por palabra clave.
+                            Esta funcionalidad permite especificar explícitamente a qué parámetro corresponde cada valor al llamar a una función, lo que elimina ambigüedades y reduce errores.
+                            Además, facilita el uso de valores por defecto y permite mayor flexibilidad en el orden de los argumentos.
+                            Esta mejora refuerza uno de los principios clave de Python: el código debe ser claro incluso para quien no lo escribió.
                         </p>
 
                         <p>Esto supone una mejora para la legibilidad, también permite cambiar el orden de los argumentos y facilita el uso de valores predeterminados, haciendo el código más claro y flexible.</p>
 
-                        <p>Aquí te muestro un ejemplo de su uso:</p>
+                        <p>Aquí te muestro un ejemplo del uso de las palabras clave:</p>
 
                         <div class="code-box">            
 <pre><code>def describir_persona(nombre, edad, ciudad="Madrid"):
@@ -177,7 +187,8 @@ print(numeros)
                         En 1995, Van Rossum continuó su trabajo en Python en la Corporation for National Research Initiatives (CNRI) en Reston, Virginia, donde lanzó varias versiones del software.</p>
 
                     <p>La versión 1.6 fue la última versión publicada por CNRI el 5 de septiembre de 2000.
-                        Estas versiones iniciales sentaron la base del modelo de programación de Python: limpieza de sintaxis, modularidad y soporte para paradigmas múltiples (imperativo, orientado a objetos, ligero uso de funciones).</p>
+                        En conjunto, la serie Python 1.x no solo introdujo funcionalidades, sino que definió los principios fundamentales del lenguaje: simplicidad, legibilidad, eficiencia y flexibilidad.
+                        Estas versiones iniciales establecieron las bases sobre las que se construirían todas las posteriores, convirtiendo a Python en una herramienta capaz de adaptarse a distintos contextos sin perder su esencia.</p>
                 </ul>
             </section>
         </main>

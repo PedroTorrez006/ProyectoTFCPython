@@ -22,15 +22,22 @@
             <main class="content-container">
                 <section class="text-block">
                     <h2>El salto a la modernidad</h2>
-                    <p>Fue publicada el 16 de octubre de 2000, la serie 2 de Python introdujo un modelo de desarrollo mucho más abierto y comunitario.
-                        Esta etapa transformó a Python de un lenguaje de nicho a una herramienta fundamental para la industria tecnológica, siendo adoptado por empresas gigante como Google, NASA y la industria del cine (VFX).</p>
+                    <p>Fue publicada el 16 de octubre de 2000, la serie 2 de Python representa la etapa en la que Python dejó de ser un lenguaje prometedor para convertirse en una herramienta ampliamente adoptada de la industria.
+                        Bajo la continuidad del trabajo iniciado por Guido van Rossum, esta serie introdujo mejoras fundamentales en rendimiento, gestión de memoria y expresividad del lenguaje.
+                        Además, marcó el inicio de un modelo de desarrollo más abierto y colaborativo, impulsando una comunidad global que contribuyó activamente a su crecimiento.
+                        Durante este periodo, Python fue adoptado por grandes organizaciones tecnológicas y científicas, consolidándose como una opción sólida para aplicaciones reales.
+                    </p>
                 </section>
 
                 <section>
                     <h2>Análisis de la serie 2.x</h2>
                     <ul>
                         <li><strong>Python 2.0:</strong>
-                            <p>Esta versión introdujo características que modernizaron la gestión de datos y memoria:
+                            <p>Esta versión supuso un punto de inflexión al introducir mejoras clave en la forma de trabajar con datos y en la gestión de memoria.
+                                Una de sus aportaciones más relevantes fueron las list comprehensions, que permitían construir listas de manera concisa y legible inspirándose en la notación matemática.
+                                Este cambio no solo redujo la cantidad de código necesario, sino que también mejoró su claridad, facilitando la comprensión de operaciones sobre colecciones.
+                                Paralelamente, se incorporó un recolector de basura capaz de detectar ciclos de referencias, solucionando una limitación importante del sistema anterior basado únicamente en conteo de referencias.
+                                Este avance evitó fugas de memoria en estructuras complejas, haciendo a Python mucho más robusto para aplicaciones reales.</p>
                                 <ul>
                                     <li>List Comprehensions: Una sintaxis compacta para crear listas basada en la notación matemática de conjuntos. Permitió escribir código más legible y eficiente que los bucles tradicionales.</li>
                                     
@@ -58,15 +65,14 @@ del objeto
 # El contador llega a 0, Python libera la memoria
 del otro</code></pre>
                                     </div>
-                                    
                                 </ul>
-                            </p>
                         </li>
 
                         <li><strong>Python 2.1:</strong>
-                            <p>Esta versión se lanzó el 17 de abril de 2001, no tuvo muchos cambios como en Python 2.0, esta versión mejoró la gestión de memoria con un nuevo recolector de basura (es un mecanismo automático que libera la memoria que ya no se está usando en un programa.),
-                                añadió el módulo __future__ para probar funciones de versiones futuras, y permitió que las funciones internas accedieran a variables externas (nested scopes).
-                                También introdujo bases para las clases nuevas y los generadores, mejoró el manejo de excepciones y la biblioteca estándar.
+                            <p>Esta versión se lanzó el 17 de abril de 2001, esta versión comenzó a refinar aspectos internos que mejorarían su coherencia y potencia a largo plazo.
+                                La introducción de los llamados "nested scopes" permitió que las funciones internas accedieran a variables definidas en ámbitos externos, algo esencial para escribir código más modular expresivo.
+                                Además, el módulo future permitió a los desarrolladores experimentar con características que aparecerían en versiones posteriores, facilitando una transición progresiva del lenguaje.
+                                Esta versión también sentó las bases de dos conceptos clave que se consolidarían después: los generadores y el nuevo modelo de clases.
                             </p>
                         </li>
 
@@ -80,10 +86,10 @@ del otro</code></pre>
                         </li>
 
                         <li><strong>Python 2.3:</strong>
-                            <p>Esta versión se lanzó el 29 de julio de 2003, se centró en el rendimiento, la estabilidad y la expansión de la biblioteca estándar. 
-                                Además se añadieron módulos como datetime, sets y logging, que hoy son fundamentales a la hora de programar. 
-                                También se mejoró el manejo de la rebanadas (slices) que son una forma de extraer proporciones de secuencias como listas, tuplas o cadenas de caracteres usando las sintaxis.
-                                Se hicieron optimizaciones internas para acelerar la ejecución del código.
+                            <p>Esta versión se lanzó el 29 de julio de 2003, esta versión se centro en la consolidación del lenguaje a través de mejoras en rendimiento y en la ampliación de la biblioteca estándar.
+                                Se introdujeron módulos que hoy son esenciales, como datetime para el manejo de fechas, logging para el registro de eventos y sets para trabajar con conjuntos de datos únicos.
+                                Estas incorporaciones reflejan un cambio importante: Python no solo evolucionaba como lenguaje, sino también como ecosistema complet.
+                                Además, se optimizó el rendimiento interno y se mejoraron mecanismos como el slicing, facilitando la manipulación de secuencias de forma más eficiente y expresiva.
                             </p>
                         </li>
 
@@ -186,18 +192,26 @@ division_segura(10, "a")</code></pre>
                         </li>
 
                         <li><strong>Python 2.6:</strong>
-                            <p>Esta versión se lanzó el 1 de octubre de 2008, se incorporaron nuevas características y sintaxis preparatorias para la versión 3.0, para facilitar la migración.
-                                Entre las nuevas incorporaciones se encuentran la agregación de algunos paquetes nuevos importantes a la biblioteca estándar, como los módulos multiprocessing y json, también se incluyeron una serie de mejoras y correcciones de errores en el código fuente donde se aplicaron 256 parches y se corrigieron 612 errores.
+                            <p>Esta versión se lanzó el 1 de octubre de 2008, el objetivo principal de esta versión fue preparar el terreno para la transición hacia Python 3.
+                                Esta versión incorporó nuevas bibliotecas como json y multiprocessing, que respondían a necesidades reales como el intercambio de datos y la ejecución paralela.
+                                Al mismo tiempo, introdujo características compatibles con Python 3, permitiendo a los desarrolladores adaptar progresivamente su código.
+                                Más que una versión innovadora, Python 2.6 fue una versión estratégica que facilitó una migración menos abrupta.
                             </p>
                         </li>
 
                         <li><strong>Python 2.7:</strong>
-                            <p>Esta versión se lanzó el 3 de julio de 2010, fue el último lanzamiento importante de la serie 2, las novedades que trajo fueron: Se mejoró numérico, tanto para los números de punto flotante como para la clase Decimal.
-                                Hubo una gran mejora al módulo unittest, el módulo argparse para analizar las opciones de la línea de comandos, adecuando las clases OrderedDict y Counter en el módulo Collections, y muchas otras mejoras.
+                            <p>Esta versión se lanzó el 3 de julio de 2010, fue la última gran versión de la serie 2.x y representó su punto máximo de madurez. 
+                                Incluyó mejoras en precisión numérica, nuevas herramientas para pruebas como unittest, y módulos como argparse para gestionar argumentos en línea de comandos. 
+                                También incorporó estructuras de datos avanzadas como OrderedDict y Counter, ampliando las capacidades del lenguaje en el manejo de colecciones. 
+                                A pesar de estas mejoras, el desarrollo de nuevas características se detuvo en favor de Python 3, marcando el inicio del fin de la serie 2.x, cuyo soporte oficial concluyó en 2020.
                             </p>
                         </li>
 
-                        <p>El motivo de que fuera la última versión 2 fue debido a que los mantenedores de Python cambiaron su enfoque de sus esfuerzos en el desarrollo de nuevas características para la serie 3.
+                        <p>Python 2.x fue la etapa en la que el lenguaje alcanzó su madurez técnica y su adopción masiva. 
+                            Durante estos años se resolvieron problemas fundamentales relacionados con la eficiencia, la gestión de memoria, la modularidad y la escalabilidad. 
+                            Además, se construyó un ecosistema sólido que permitió a Python convertirse en una herramienta clave en múltiples ámbitos, desde el desarrollo web hasta la ciencia de datos. 
+                            Esta etapa no sólo consolidó el lenguaje, sino que sentó las bases necesarias para la evolución hacia Python 3, donde muchas de estas ideas se perfeccionaron aún más. 
+                            El principal motivo de que fuera la última versión 2 fue debido a que los mantenedores de Python cambiaron su enfoque de sus esfuerzos en el desarrollo de nuevas características para la serie 3. 
                             Debido a que mientras Python 2 continúe recibiendo correcciones de errores, y sea constantemente actualizado para construir correctamente sobre nuevo hardware y versiones de sistemas operativos compatibles, no habrá nuevas versiones completas de funciones para el idioma o la biblioteca estándar.
                         </p>
                     </ul>
