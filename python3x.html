@@ -22,8 +22,10 @@
             <main class="content-container">
                 <section class="text-block">
                     <h2>La gran ruptura: Incompatibilidad necesaria</h2>
-                    <p>La primera versión de esta serie fue lanzada el 3 de diciembre de 2008, la serie 3 fue diseñada bajo el lema de "reducir la duplicidad de funciones".
-                        A diferencia de las versiones anteriores, no es comparible con el código de la serie 2.x, lo que obligó a una transición de más de una década, pero permitió que el lenguaje fuera mucho más consistente y potente.</p>
+                    <p>La primera versión de esta serie fue lanzada el 3 de diciembre de 2008, la serie 3 representa la etapa más ambiciosa en la historia del lenguaje, en la que Python se redefine a sí mismo para corregir limitaciones del pasado y adaptarse a un entorno tecnológico cada vez más exigente.
+                        Bajo la dirección de Guido van Rossum y una comunidad global muy activa, esta serie introduce cambiod profundos que priorizan la coherencia, la internacionalización y el rendimiento.
+                        A diferencia de la transición entre versiones anteriores, Python 3 supuso una ruptura deliberada con la compatibilidad hacia atrás, una decisión arriesgada pero necesaria para construir un lenguaje más limpio, consistente y preparado para el futuro.
+                    </p>
                 </section>
 
                 <section>
@@ -129,12 +131,13 @@ if __name__ == "__main__":
                         </li>
 
                         <li><strong>Python 3.3:</strong>
-                            <p>Esta versión se lanzo el 29 de septiembre de 2012, esta versión añadio varias mejoras de diseño importantes como la expresión <code>yield from</code>, permitiendo que un generador delegue parte de sus operaciones a otro generador.
-                            Esto permite tomar una sección de código que contenga la palabra yield y ubicarla en otro generador.
-                            Además, el sub generador puede regresar un valor y ese valor se pone a disposición del generador que se delega.
+                            <p>Esta versión se lanzo el 29 de septiembre de 2012, esta versión introdujo mejoras conceptuales relevantes, especialmente en el manejo de generadores con la expresión "yield from".
+                                Esta característica permitió delegar la generación de valores en otros generadores, simplificando enormemente el código y mejorando su modularidad.
+                                Además, se unificó la representación interna de cadenas, eliminando diferencias entre implementaciones y facilitando el manejo de texto.
+                                Este tipo de cambios, aunque poco visibles, fueron clave para mantener la coherencia interna del lenguaje.
                             </p>
 
-                            <p>Aquí muestro un ejemplo de como se aplicaria:</p>
+                            <p>Aquí muestro un ejemplo de como se aplicaria el yield:</p>
 
                             <div class="code-box">
 <pre><code>def mi_generador():
@@ -153,13 +156,16 @@ if __name__ == "__main__":
                         </li>
 
                         <li><strong>Python 3.4:</strong>
-                            <p>Esta versión se lanzó el 16 de marzo de 2014, esta versión estuvo enfocada en nuevas librerías clave y facilitar el empaquetado/despliegue.
-                                También añadió asyncio que es una biblioteca fundamental utilizado para escribir código concurrente utilizando el paradigma de programación asíncrona, siendo especialmente útil para tareas que requieran esperar, como operaciones de red, entrada/salida de disco y conexiones de bases de datos.
+                            <p>Esta versión se lanzó el 16 de marzo de 2014, esta versión hizo que el lenguaje diese un paso decisivo hacia la programación moderna al incorporar el módulo asyncio.
+                                Este introdujo oficialmente el paradigma de programación asíncrona en Python, permitiendo gestionar múltiples tareas concurrentes sin bloquear la ejecución.
+                                Este avance resultó fundamental en aplicaciones que dependen de operaciones de entrada/salida, como servidore web o sistemas de red, donde la eficiencia depende de la capacidad de manejar múltiples procesos simultáneamente.
                             </p>
                         </li>
 
                         <li><strong>Python 3.5:</strong>
-                            <p>Esta versión se lanzó el 13 de septiembre de 2015, esta versión destacó en introducir nuevos aspectos.
+                            <p>Esta versión se lanzó el 13 de septiembre de 2015, esta versión consolidó este enfoque al introducir las palabras clave async y await, que proporcionaron una sintaxis clara y directa para trabajar con corutinas.
+                                Esto simplificó enormemente el desarrollo de código asíncrono, haciéndolo más legible y mantenible.
+                                Además, se ampliaron las capacidades del lenguaje en el manejo de estructuras de datos mediante operadores de desempaquetado, lo que permitió escribir código más expresivo y flexible.
                                 En la sintaxis introdujo los siguientes aspectos:</p>
                                 <ul>
                                     <li>Mejoró enormemente el soporte de la programación asíncrona al agregar objetos aguardables, funciones corrutina, iteraciones asincrónicas y gestores asincrónicos de contexto.</li><br>
@@ -203,7 +209,11 @@ d_total = {**d1, **d2, 'c' : 3}
                         </li>
 
                         <li><strong>Python 3.6:</strong>
-                            <p>Esta versión se lanzó el 23 de diciembre de 2016, esta versión se caracterizo por mejorar la productividad al introducir nuevas formas de fomentar cadenas y avanzar en la adopción del tipado estático opcional.</p>
+                            <p>Esta versión se lanzó el 23 de diciembre de 2016, esta versión se centró en mejorar la productividad del desarrollador.
+                                La introducción de las f-strings supuso una revolución en la forma de formatear texto, ofreciendo una sintaxis más clara, eficiente y fácil de leer.
+                                También se ampliaron las anotaciones de tipo, permitiendo especificar tipos no solo en funciones, sino también en variables. lo que facilitó el desarrollo de herramientas de análisis estático y mejoró la calidad del código en proyectos grandes.
+                                
+                            </p>
                                 <ul>
                                     <li>Cadenas Literales Formateadas (f-Strings): Las "f-strings" proporcionan una sintaxis concisa, eficiente y legible para incrustar expresiones de Python dentro de cadenas de texto. Son la forma preferida de formateo de cadenas en la actualidad.</li>
                                     
@@ -232,7 +242,10 @@ LIMITE_INTENTOS: int = 5
                         </li>
 
                         <li><strong>Python 3.7:</strong>
-                            <p>Esta versión se lanzó el 27 de junio de 2018, introdujo una característica que elimina la necesidad de escribir mucho código repetitivo (boilerplate) en clases que solo se usan para almacenar datos.</p>
+                            <p>Esta versión se lanzó el 27 de junio de 2018, dio un paso importante hacia la simplificación del código repetitivo mediante la introducción de las dataclasses.
+                                Estas permiten definir estructuras de datos de forma concisa, generando automáticamente métodos comunes como inicialización o representación en texto.
+                                Este cambio redujo significativamente la cantidad de código necesario para tareas habituales, mejorando la claridad y mantenibilidad de los programas. 
+                            </p>
                                 <ul>
                                     <li>Una de las innovaciones que trajo fue las Clases de Datos, El decorador @dataclass permite crear clases con métodos comunes como __init__, __repr__ y __eq__ generados automáticamente, haciéndolas ideales para modelar estructuras de datos.</li>
                                 </ul>
@@ -282,7 +295,8 @@ while (linea := archivo.readline()):
                         </li>
 
                         <li><strong>Python 3.9:</strong>
-                            <p>Esta versión se lanzó el 5 de octubre de 2020, se centró en mejorar la productividad al refinar el trabajo con estructuras de datos fundamentales como los diccionarios y las cadenas de texto, además de avanzar en la simplificación de las anotaciones de tipo.
+                            <p>Esta versión se lanzó el 5 de octubre de 2020, esta versión continuó mejorando la experiencia de desarrollo con cambios en estructuras fundamentales como los diccionarios, introduciendo operadores más intuitivos para su combinación y actualización.
+                                También se añadieron métodos especifícos para trabajar con cadenas, simplificando tareas comunes y reduciendo la necesidad de soluciones manuales menos claras.</p>
                                 <ul>
                                     <li>Se introdujeron Nuevos Operadores para Fusión y Actualización de Diccionarios, los siguientes operadores consiguieron simplificar la sintaxis para combinar y modificar diccionarios de forma concisa.</li><br>
                                     
@@ -342,7 +356,6 @@ print(dt)
 # 2025-12-04 15:00:00+01:01</code></pre>
                                     </div>
                                 </ul>
-                            </p>
                         </li>
 
                         <li><strong>Python 3.10:</strong>
@@ -367,7 +380,12 @@ match punto
                         </li>
 
                         <li><strong>Python 3.11:</strong>
-                            <p>Esta versión se lanzó el 24 de octubre de 2022, introdujo mejoras de rendimiento significativas bajo el proyecto "Faster CPython" y una característica muy útil para la depuración de código (debugging).
+                            <p>Esta versión se lanzó el 24 de octubre de 2022, el foco se desplazó hacia el rendimiento y la experiencia del desarrollador.
+                                Gracias al proyecto "Faster CPython", el intérprete se volvió significativamente más rápido, con mejoras notables en la ejecución de código.
+                                Además, los mensajes de error se hicieron mucho más precisos, indicando exactamente qué parte de una expresión causó el fallo.
+                                Esto supuso una mejora enorme en la depuración de programas.
+                                También se introdujeron los grupos de excepciones, que permiten manejar múltiples errores simultáneamente, algo especialmente útil en programación concurrente.
+                            </p>
                                 <ul>
                                     <li>Rendimiento Aumentado (El Proyecto Faster CPython): Esta versión hizo que el intérprete de CPython fuera notablemente más rapido, prometiendo una mejor promedio del 25% respecto a Python 3.10 y hasta un 60% más rápido en ciertos benchmarks.
                                         Esto se logró gracias a Evaluation Adapters: Permiten que el intérprete reemplace algunas operaciones de bytecode genéricas con versiones más especializadas en tiempo de ejecución.</li><br>
@@ -422,11 +440,13 @@ except* ErrorArchivo as eg:
     print("Error de archivo capturado: {eg}")</code></pre>
                                     </div>
                                 </ul>
-                            </p>
                         </li>
 
                         <li><strong>Python 3.12:</strong>
-                            <p>Esta versión se lanzó el 2 de octubre de 2023, continuó con el enfoque en el rendimiento e hizo que el código con genéricos (tipado avanzado) fuera más fácil de escribir.
+                            <p>Esta versión se lanzó el 2 de octubre de 2023, esta versión continuó esta línea de optimización y simplificación, mejorando el soporte para tipado genérico y facilitando la escritura de código más seguro y mantenible.
+                                También se optimizó el rendimiento de asyncio y se añadieron mejoras en las f-strings, aumentando su flexibilidad.
+                                Estas mejoras reflejan una tendencia clara hacia un lenguaje más robusto y preparado para aplicaciones complejas.</p>
+                                
                                 <ul>
                                     <li>Introdujo un soporte Nativo para Tipos Genéricos: Simplifica drásticamente la definición de clases y funciones que operan génericos, eliminando la necesidad de importar <code>TypeVar</code> de <code>typing</code> para casos sencillos.</li>
 
@@ -453,11 +473,13 @@ mensaje = "El resultado final es: {resultado # Esto es un comentario + 1 # Añad
 print(mensaje) # El resultado final es: 43</code></pre>
                                     </div>
                                 </ul>
-                            </p>
                         </li>
 
                         <li><strong>Python 3.13:</strong>
-                            <p>Esta versión se lanzó el 7 de octubre de 2024, esta versión se centra principalmente en la reestructuración interna del intérprete para lograr un rendimiento significativamente mayor, especialmente en escenarios de concurrencia.
+                            <p>Esta versión se lanzó el 7 de octubre de 2024, esta versión se centró en uno de los mayores desafíos históricos del lenguaje: la concurrencia real.
+                                Los avances hacia la eliminación del GIL (Global Interpreter Lock) representan un cambio profundo en la arquitectura del intérprete, permitiendo aprovechar mejor los procesos multinúcleo.
+                                Aunque este cambio es progresivo, su impacto potencial es enorme en aplicaciones de alto rendimiento.
+                            </p>
 
                                 <ul>
                                     <li>El cambio más ambicioso de esta versión due la eliminación del GIL (Global Interpreter Lock), El GIL ha sido un obstáculo para la ejecución paralela real del código Python ligado a la CPU.
@@ -465,7 +487,6 @@ print(mensaje) # El resultado final es: 43</code></pre>
 
                                     <li>Novedad Clave:La implementación se basa en el trabajo experimental del modo "nogil" y busca ser la configuración por defecto, lo que resultará en un aumento masivo de rendimiento en aplicaciones que utilizan el módulo threading para realizar cálculos intensivos.</li>
                                 </ul>
-                            </p>
                         </li>
 
                         <li><strong>Python 3.14:</strong>
@@ -489,6 +510,11 @@ print(plantilla)
 </code></pre>
                             </div>
                         </li>
+
+                        <p>En conjunto, la serie Python 3.x no solo representa una evolución técnica, sino una redefinición completa del lenguaje.
+                            Cada versión ha contribuido a mejorar la coherencia, el rendimiento y la capacidad de adaptación de Python, consolidándolo como una herramienta fundamental en campos como el desarrollo web, la inteligencia artificial, la ciencia de datos y la automatización.
+                            Esta etapa demuestra cómo un lenguaje puede evolucionar sin perder su esencia, manteniendo como principio central la claridad y la simplificidad, incluso en su contexto tecnológico cada vez más complejo.
+                        </p>
                     </ul>
                 </section>
             </main>
