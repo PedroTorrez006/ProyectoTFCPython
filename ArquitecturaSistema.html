@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Evolución de Python | Arquitectura del Sistema</title>
+        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="menu.css">
+    </head>
+
+    <body>
+        <script src="menu.js"></script>
+        <div id="menu" class="menu"></div>
+
+        <div class="container">
+            
+            <header class="hero-versions">
+                <h1>Arquitectura del Sistema Python</h1>
+                <p>Diseño Robusto, Escalable y de Alto Rendimiento</p>
+            </header>
+
+            <main class="content-container">
+                <section class="text-block">
+                    <h2>1. Lógica Interna y Arquitectura Interna</h2>
+                    <p>El sistema ha sido bajo lel paradigma de Arquitectura Limpia (Clean Architecture) y el patrón de Diseño Orientado a Dominios (DDD).
+                        La premisa fundamental es la independencia de marcos de trabajo (frameworks), lo que permite que el núcleo del negocio sea agnóstico a la base de datos o a la interfaz de ususario.</p>
+
+                    <div class="v-card">
+                        <h3><strong>Principio Rector:</strong></h3>
+                        <p>Las dependencias siempre apuntan hacia el interior. Las capas externas (infraestructura, interfaz) dependen de las internas (dominio, aplicación), nunca al revés. Esto garantiza que un cambio en la base de datos o en el framework web no obligue a modificar la lógica de negocio.</p>
+                    </div>
+                    
+                    <div class="diagram-box">
+                        <h3>Capas del Sitema:</h3>
+                        <p>La arquitectura se estructura en cuatro capas concéntricas, ordenadas de mayor a menor nivel de abstracció. Cada capa tiene una responsabilidad única y acotada:</p>
+                        
+                        <ol>
+                            <li><strong>Capa de Entidades (Domain):</strong> Contiene los objetos de negocio y las reglas de validación más elementales. Es la capa más interna y no tiene dependencias externas.</li>
+                            <li><strong>Capa de Casos de Uso (Application):</strong> Define las operaciones específicas que el sistema puede realizar. Orquesta el flujo de datos desde y hacia las entidades.</li>
+                            <li><strong>Capa de Adaptadores (Infraestructure):</strong> Aquí se sitúan las implementaciones de bajo nivel. Incluye el acceso a bases de datos, clientes de APIs de terceros y sistemas de archivos.</li>
+                            <li><strong>Capa de Interfaz (User Interface/API):</strong> Gestiona la interacción con el ususario final, ya sea mediante una API REST, una interfaz de línea de comandos (CLI) o una interfaz gráfica.</li>
+                        </ol>
+
+                        <h3>Beneficios de esta separación</h3>
+                        <p>La independencia entr capas no es un fin en sí mismo, sino un medio para obtener ventajas concretas y medibles durante el desarrollo del sistema:</p>
+
+                        <ul>
+                            <li><strong>Testeabilidad aislada:</strong> Cada capa puede probarse de forma independiente mediante tests unitarios.
+                                Un fallo en la base de datos no contamina los tests de la lógica de negocio, ya que los repositorios se sustituyen por dobles de prueba (mocks o stubs) en el entorno de test.</li>
+                            <li><strong>Sustituibilidad de implementaciones:</strong> La base de datos puede reemplazarse (de PostgreSQL a MongoDB, por ejemplo) sin modificar una sola línea de las capas de Dominio o Aplicación, siempre que la nueva implementación respete los contraros definidos.</li>
+                            <li><strong>Paralelismo en el desarrollo:</strong> Equipos diferentes pueden trabajar simultáneamente en la lógica de negocio y en la infraestructura, dado que la comunicación entre capas se realiza a través de interfaces (contratos) acrdadas de antemano.</li>
+                            <li><strong>Longevidad del código:</strong> La capa de Dominio, al no depender de ningún framework, es inmune a los cambios de versión o a la obsolencia de herramientas externas.
+                                Es la parte del sistema con mayor vida útil esperada.</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section class="text-block">
+                    <h2>2. Diagrama de Flujo de Datos (Pipeline de Ejecución)</h2>
+                    <p>El procesamiento de la información sigue un flujo bidireccional controlado para garantizar la integridad de los datos en cada etapa.
+                        El diseño del pipeline es explícito: ningún dato avanzado hacia la siguiente etapa si no supera las validaciones de la etapa anterior.
+                        Estos elimina una clase entera de errores por datos malformados que llegan tarde al sistema.</p>
+
+                    <div class="timeline-overview">
+                        <div class="v-card">
+                            <span class="year">Etapa 1</span>
+                            <h3>Entrada y Validación</h3>
+                            <p>Los datos externos ingresan al sistema y son validados de form inmediata mediante esquemas de tipos definidos con Pydantic.
+                                Si los datos no cumplen el contrato tipado definido (campos obligatorios, tipos incorectos, valores fuera de rango), el sistema rechaza la petición con un error descriptivantes de consumir recursos de procesamiento.
+                                Esta estrategia de 'fail fast' reduce la carga en las etapas posteriores y hace los errores trazables desde su origen.
+                            </p>
+                        </div>
+
+                        <div class="v-card">
+                            <span class="year">Etapa 2</span>
+                            <h3>Transformación y Lógica de Dominio</h3>
+                            <p>Una vez validados, los datos pasan a los servicios de dominio. Aquí se aplican los algoritmos de negocio: Limpieza y transformación de datos con Pandas/NumPy, cálculos complejos, aplicación de reglas de dominio y orquestación de agregados.
+                                Esta etapa es agnóstica al origen de los datos y a su destino final, lo que la hace completamente testable de forma aislada.
+                            </p>
+                        </div>
+
+                        <div class="v-card">
+                            <span class="year">Etapa 3</span>
+                            <h3>Persistencia Transaccional</h3>
+                            <p>Tras el procesamiento, los objetos resultantes se mapean a modelos de bases de datos a través del ORM (SQLAlchemy).
+                                Las operaciones de escritura se ejecutan dentro de transacciones atómicas: o se completa la operación en su totalida, o no se realiza ningún cambio (patrón Unit of Work).
+                                Esto garantiza la consistencia de la base de datos incluso ante fallos parciales del sistema o de la red.
+                            </p>
+                        </div>
+
+                        <div class="v-card">
+                            <span class="year">Etapa 4</span>
+                            <h3>Respuesta y Serialización</h3>
+                            <p>El sistema genera la respuesta en el formato adecuado al canal de salida: JSON serializado con Pydantic para APIs REST, archivos CSV/Excel para exportaciones o reportes formateados.
+                                Las respuestas incluyen códigos de estado HTTP estandarizados (200, 201, 400, 422, 500) que informan al consumidor sobre el resultado de la operación semántica precisa.
+                            </p>
+                        </div>
+                        
+                        <div class="note-card">
+                            <span class="note">Nota sobre el manejo de errores</span>
+                            <p>El pipeline Implementa un patrón de propagación de errores explícita: cada etapa lanza excepciones tipadas (ValidationError, DomainError, PersistenceError) que son capturadas por un manejador global en la capa de interfaz.
+                                Esto garantiza que ningún error silencioso corrompa el estado del sistema y que todos los fallos queden registrados con contexto suficiente para su diagnóstico.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="text-block">
+                    <h2>3. Estructura del Ecosistema Python</h2>
+                    <p>Python no es solo un lenguaje: es un ecosistema estratificado que comprende desde el intérprete que ejecuta el código hasta el repositorio global de paquetes y las herramientas de aislamiento de entornos.
+                        Comprender esta jerarquía es esencial para gestionar correctamente las dependencias y reproducir el entorno de ejecución en distintas máquinas.
+                    </p>
+
+                    <div class="file-tree">
+                        <pre>
+Python_Global_Ecosystem/
+│
+├── Runtime/                        # Motor de ejecución
+│   ├── CPython                      # Implementación de referencia (C)
+│   └── PyPy                         # JIT compiler (hasta 40× más rápido en bucles)
+│
+├── Standard_Library/               # Módulos incluidos sin instalación adicional
+│   ├── os, sys, pathlib             # Sistema de archivos y entorno
+│   ├── json, csv, xml               # Serialización de datos
+│   ├── asyncio, threading           # Concurrencia y paralelismo
+│   ├── logging, unittest            # Observabilidad y testing
+│   └── http, socket, ssl            # Redes y comunicaciones
+│
+├── Package_Index_(PyPI)/           # Repositorio global: +500 000 paquetes
+│   ├── /Data_Science                # Pandas, NumPy, SciPy, Polars
+│   ├── /Machine_Learning            # scikit-learn, PyTorch, TensorFlow
+│   ├── /Web_Frameworks              # FastAPI, Django, Flask, Starlette
+│   ├── /Databases                   # SQLAlchemy, psycopg2, motor
+│   ├── /Testing                     # pytest, coverage, hypothesis
+│   └── /Automation                  # Celery, APScheduler, Fabric
+│
+└── Environments/                   # Aislamiento de dependencias por proyecto
+    ├── venv                         # Estándar de la librería
+    ├── Conda                        # Gestión de entornos científicos
+    └── Poetry / uv                  # Gestión moderna de dependencias</pre>
+                    </div>
+
+                    <div class="text-block">
+                        <h3>Por Qué el Aislamiento de Entornos es Crítico</h3>
+                        <p>El sistema de entornos virtuales resuelve el problema del 'dependency hell': situaciones en las que dos proyectos en la misma máquina requieren versiones incompatibles de una misma librería.
+                            Cada entorno virtual es un directorio autocontenido con su propia copia del intérprete y sus propias dependecias, completamente aislado del resto del sistema.</p>
+
+                        <div class="table-container">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Herramienta</th>
+                                        <th>Caso de Uso Recomendado</th>
+                                        <th>Ventaja diferencial</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>venv</strong></td>
+                                        <td>Proyectos web y APIsde tamaño estándar</td>
+                                        <td>Incluido en Python 3.3+; sin instalación adicional</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Conda</strong></td>
+                                        <td>Proyectos de data science con dependencias C/Fortran (NumPy, SciPy)</td>
+                                        <td>Gestiona binarios precompilados; no requere compilador local</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Poetry</strong></td>
+                                        <td>Proyectos con publicación en PyPI o dependencias complejas</td>
+                                        <td>Lock file determinista; resolución de conflictos automática</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>uv</strong></td>
+                                        <td>Proyectos que priorizan velocidad de instalación</td>
+                                        <td>10-100x más rápido que pip; escrito en Rust</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="text-block">
+                    <h2>4. Tecnologías y Componentes Clave</h2>
+                    <p>El rendimiento y la robustez de cualquier sistema Python están determinados en gran medida por sus componentes internos.
+                        A continuación 
+                    </p>
+
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Tecnología</th>
+                                <th>Función Crítica</th>
+                                <th>Por qué se utiliza</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Lenguaje C</strong></td>
+                                <td>Base de CPython</td>
+                                <td>Permite acceso directo a la memoria y optimización de bajo nivel.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>GIL</strong></td>
+                                <td>Control de Concurrencia</td>
+                                <td>Previene condiciones de carrera en el manejo de objetos de C.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Garbage Collector</strong></td>
+                                <td>Gestión de Memoria</td>
+                                <td>Implementa conteo de referencias para liberar RAM automáticamente</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+            </main>
+
+            <footer>
+            <p>Proyecto de Investigación: Las Versiones de Python | 2026</p>
+        </footer>
+        </div>
+    </body>
+</html>

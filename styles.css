@@ -53,6 +53,25 @@ body {
     border-bottom: 4px solid var(--python-yellow);
 }
 
+.note-card {
+    background: #fef3c7;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    border-bottom: 4px solid #78350f;
+    grid-column: 1/ -1;
+    margin-top: 10px;
+}
+
+.note {
+    font-weight: bold;
+    color: #78350f;
+    margin-bottom: 10px;
+    display: block;
+}
+
 .year {
     font-weight: bold;
     color: var(--python-blue);
@@ -104,6 +123,38 @@ body {
     text-align: left; 
 }
 
+.file-tree {
+    background-color: var(--dark-blue);
+    color: var(--light-gray);
+    padding: 20px;
+    border-radius: 6px;
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    overflow-x: auto;
+}
+
+/* Tablas */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px 0;
+}
+
+.data-table th .data-table td {
+    text-align: left;
+    padding: 15px;
+    border-bottom: 1px soild #eee;
+}
+
+.data-table th {
+    background-color: var(--python-blue);
+    color: var(--light-gray);
+}
+
+.table-container {
+    overflow-x: auto;
+    width: 100%;
+}
+
 pre {
     margin: 0;
     padding: 0;
@@ -123,6 +174,12 @@ code {
     font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
     font-size: 0.95rem;
     line-height: 1.5;
+}
+
+footer {
+    text-align: center;
+    margin-top: 50px;
+    font-size: 0.9em;
 }
 
 /* --- DISEÑO RESPONSIVE (MÓVIL) --- */
