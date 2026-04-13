@@ -117,7 +117,7 @@ Python_Global_Ecosystem/
 │
 ├── Runtime/                        # Motor de ejecución
 │   ├── CPython                      # Implementación de referencia (C)
-│   └── PyPy                         # JIT compiler (hasta 40× más rápido en bucles)
+│   └── PyPy                         # JIT compiler (hasta 40x más rápido en bucles)
 │
 ├── Standard_Library/               # Módulos incluidos sin instalación adicional
 │   ├── os, sys, pathlib             # Sistema de archivos y entorno
@@ -184,35 +184,175 @@ Python_Global_Ecosystem/
                 <section class="text-block">
                     <h2>4. Tecnologías y Componentes Clave</h2>
                     <p>El rendimiento y la robustez de cualquier sistema Python están determinados en gran medida por sus componentes internos.
-                        A continuación 
+                        A continuación describire los mecanismos fundamentales del intérprete CPython y su impacto directo en las decisiones de diseño arquitectónico.
                     </p>
 
                     <table class="data-table">
                         <thead>
                             <tr>
-                                <th>Tecnología</th>
-                                <th>Función Crítica</th>
-                                <th>Por qué se utiliza</th>
+                                <th>Componente</th>
+                                <th>Función en el sistema</th>
+                                <th>Implificación arquitectónica</th>
+                                <th>Estrategia de mitigación</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td><strong>Lenguaje C</strong></td>
-                                <td>Base de CPython</td>
-                                <td>Permite acceso directo a la memoria y optimización de bajo nivel.</td>
+                                <td>Fundamento de CPython. Permite el acceso directo a la memoria del sistema y optimización de bajo nivel.</td>
+                                <td>Las extensiones críticas de rendimiento se escriben en C y se exponen como módulos Python.</td>
+                                <td>NumPy, SciPy, Pandas son wrappers Python sobre rutinas C/Fortran optimizadas.</td>
                             </tr>
                             <tr>
-                                <td><strong>GIL</strong></td>
-                                <td>Control de Concurrencia</td>
-                                <td>Previene condiciones de carrera en el manejo de objetos de C.</td>
+                                <td><strong>GIL (Global Interpreter Lock)</strong></td>
+                                <td>Mutex que asegura que solo un hilo Python ejecute bytecode a la vez, previniendo condiciones de carrera en el heap de C.</td>
+                                <td>Limita el paralelismo CPU-bound en threads nativos.</td>
+                                <td>Usar multiprocessing para CPU-bound; asyncio para I/O-bound; CPython 3.13+ permite deshabilitar el GIL.</td>
                             </tr>
                             <tr>
                                 <td><strong>Garbage Collector</strong></td>
-                                <td>Gestión de Memoria</td>
-                                <td>Implementa conteo de referencias para liberar RAM automáticamente</td>
+                                <td>Gestión automática de memoria mediante conteo de referencias (reference counting) con detector de ciclos complementario.</td>
+                                <td>Introduce pausas no deterministas (< 5 ms típicamente) inaceptables en sistemas de latencia crítica.</td>
+                                <td>Usar objetos de vida corta; evitar ciclos de referencia; considerar PyPy para GC incremental.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Bytecode VM</strong></td>
+                                <td>Compila código fuente .py a bytecode .pyc y lo ejecuta en la máquina virtual del intérprete.</td>
+                                <td>El bytecode se cachea en __pycache__/, reduciendo el tiempo de arranque en ejecuciones sucesivas.</td>
+                                <td>En entornos de producción, precompilar con python -m compileall para eliminar el paso de compilación en caliente.</td>
                             </tr>
                         </tbody>
                     </table>
+
+                    <p>Las siguientes tecnologías componen el stack técnico del sistema, organizadas por capa arquitectónica:</p>
+
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Capa</th>
+                                <th>Tecnología</th>
+                                <th>Versión / Configuración</th>
+                                <th>Justificación de elección</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Interfaz / API </strong></td>
+                                <td>FastAPI</td>
+                                <td>≥ 0.110 (async nativo)</td>
+                                <td>Validación automática con Pydantic, documentación OpenAPI integrada, rendimiento comparable a Node.js/Go en I/O-bound.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Validación</strong></td>
+                                <td>Pydantic v2</td>
+                                <td>Modo estricto activado</td>
+                                <td>Validación en el punto de entrada; modelos tipados como única fuente de verdad del contrato de datos.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Lógica de domino</strong></td>
+                                <td>Python puro</td>
+                                <td>3.11+ (mejoras de JIT)</td>
+                                <td>Sin dependencias externas en la capa de negocio; máxima portabilidad y testeabilidad.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Datos / análisis</strong></td>
+                                <td>Pandas / NumPy</td>
+                                <td>Pandas ≥ 2.0, NumPy ≥ 1.26</td>
+                                <td>Rendimiento vectorizado equivalente a C ++ en álgebra lineal (benchmark: 0.14 s vs 0.16 s en matrices 1000×1000).</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Persistencia</strong></td>
+                                <td>SQLAlchemy 2</td>
+                                <td>ORM + Core, async sessions</td>
+                                <td>Unit of work integrado; soporte para PostgreSQL, MySQL y SQLite sin cambios de código.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Tareas asícronas</strong></td>
+                                <td>Celery + Redis</td>
+                                <td>Celery 5, Redis 7</td>
+                                <td>Procesamiento en background sin bloquear el hilo principal; reintentos automáticos con backoff exponencial.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Testing</strong></td>
+                                <td>pytest</td>
+                                <td>≥ 8.0 con coverage</td>
+                                <td>Fixtures reutilizables, plugins para async (pytest-asyncio), cobertura de código integrada.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Observabilidad</strong></td>
+                                <td>strclog</td>
+                                <td>Formato JSON en producción</td>
+                                <td>Logs estructurados parseables por sistemas de agregación (Datadog, ELK, CloudWatch).</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <section class="text-block">
+                    <h2>5. Principios de Calidad y Escabilidad</h2>
+                    <p>Una arquitectura técnicamente sólida debe ir acompañada de principios de ingeniería que garanticen su caldad a lo largo del tiempo.
+                        Esta sección describe las prácticas adoptadas para asegurar que el sistema sea mantenible, observable y escalable.
+                    </p>
+
+                    <div class="text-block">
+                        <h3>Estrategias de Testing</h3>
+                        <p>El sistema sigue la pirámide de testing, con mayor peso en los niveles inferiores:</p>
+
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Nivel</th>
+                                    <th>Cobertura Objetivo</th>
+                                    <th>Herramientas</th>
+                                    <th>Qué válida</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Tests unitarios</td>
+                                    <td>> 80 %</td>
+                                    <td>pytest, unittest.mock</td>
+                                    <td>Lógica de dominio y casos de uso de forma aislada, sin BD ni red.</td>
+                                </tr>
+                                <tr>
+                                    <td>Tests de integración</td>
+                                    <td>> 60 %</td>
+                                    <td>pytest + TetClient, TestContainers</td>
+                                    <td>Interacción real entre capas: Servicio -> Repositorio -> BD en contenedor</td>
+                                </tr>
+                                <tr>
+                                    <td>Tests end-to-end</td>
+                                    <td>> 40 %</td>
+                                    <td>pytest + httpx</td>
+                                    <td>Flujos completos desde el endpoint HTTP hasta la respuesta final.</td>
+                                </tr>
+                                <tr>
+                                    <td>Tests de contrato</td>
+                                    <td>APIs públicas</td>
+                                    <td>schemathesis, pact</td>
+                                    <td>Garantiza que los cambios de API no rompan a los consumidores existentes.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="text-block">
+                        <h3>Escabilidad Horizontal</h3>
+                        <p>El sistema está diseñado para escalar horizontalmente sin modificaciones de código.
+                            Los siguientes principios lo hacen posible:
+                        </p>
+
+                        <ol>
+                            <li><strong>Sin estado en el servidor (stateless):</strong> Ninguna petición depende de información almacenada en memoria del servidor.
+                                El estado reside en la base de datos y en la cache distribuida (Redis), lo que permite añadir o eliminar instancias en cualquier momento sin interrumpir el servicio.</li>
+
+                            <li><strong>Separación de la lectura escritura (CQRS opcional):</strong> Las operaciones de lectura pueden dirigirse a réplicas de solo lectura, desacolando la carga consulta de la carga de escritura y multiplicando la capacidad de respuesta sin aumentar los costes de infraestructura de escritura.</li>
+                        
+                            <li><strong>Procesamiento asíncrono de tareas pesadas:</strong> Las operaciones de larga duración (envío de emails, procesamiento de archivos, llamadas a APIs externas) se delegan a trabajadores Celery a través de colas Reids, devolviendo la respuesta al cliente de forma inmediata y procesando en segundo plano.</li>
+
+                            <li><strong>Caché de resultados intermedios:</strong> Los resultados de consultas frecuentes y costosas se almacenan en caché con TTL (Time To Live) configurado, reduciendo la carga en la base de datos en cargas repetitivas.</li>
+                        </ol>
+                    </div>
                 </section>
             </main>
 
