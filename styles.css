@@ -150,6 +150,11 @@ body {
     color: var(--light-gray);
 }
 
+.data-table td {
+    background-color: var(--light-gray);
+    color: var(--dark-bg)
+}
+
 .table-container {
     overflow-x: auto;
     width: 100%;
