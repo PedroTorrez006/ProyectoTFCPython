@@ -136,7 +136,7 @@
 
                     <div class="v-card">
                         <span class="year">Igualdad de Género (ODS 5)</span>
-                        <p><strong>Contexto:</strong> Las brechas de género en el acceso a tecnología, empleo y representación política son medibles y corregibles.
+                        <p><strong>Contexto: </strong>Las brechas de género en el acceso a tecnología, empleo y representación política son medibles y corregibles.
                             Python se usa tanto para analizar y visibilizar estas brechas como para construir herramientas que las reducen.</p>
 
                         <p><strong>Ejemplos reales con Python:</strong></p>
@@ -145,8 +145,86 @@
 
                             <li><strong>Algorithmic Justice League: </strong>Organización que usa Python para auditar sesgos de género y raza en sistemas de reconocimiento facial comerciales. Sus estudios (publicados con código abierto) llevaron a IBM, Microsoft y Amazon a retirar o limpiar sus APIs de reconocimiento facial.</li>
 
-                            <li><strong>Girls Who Code (plataforma de aprendizaje): </strong>La plataforma se aprendizaje de programación de esta organización </li>
+                            <li><strong>Girls Who Code (plataforma de aprendizaje): </strong>La plataforma se aprendizaje de programación de esta organización - que ha formado a más de 500.00 chicas jóvenes en Estados Unidos - está construida sobre Python/Flask y usa análisis de datos para personalizar los itinerarios de aprendizaje.</li>
                         </ul>
+
+                        <p><strong>Impacto medible: </strong>El trabajo de Algorithmic Justice League llevó a Amazon a suspender su sistema de IA de reclutamiento con sesgo de género.
+                            Los informes de brechas salariales de ONU Mujeres influyeron en la legislación de 15 países.</p>
+
+                        <p><strong>Herramientas Python clave: </strong><em>Pandas, Matplotlib, scikit-learn, Flask, NLTK</em></p>
+                    </div>
+                </section>
+
+                <section class="text-block">
+                    <h2>Ámbito Ambiental: Clima, Energía y Ecosistemas</h2>
+                    <p>La crisis climática es el desafío más urgente de la Agenda 2030 es hoy el lenguaje dominante en ciencia climática, modelado de sistemas energéticod y conservación de la biodiversidad, reemplazando progresivamente a MATLAB y Fortran en laboratorios de investigación de todo el mundo.</p>
+
+                    <div class="v-card">
+                        <span class="year">Energía Asequible y No Contaminante (ODS 7)</span>
+                        <p><strong>Contexto: </strong>La transición energética hacia fuentes renovables es el mecanismos principal para descarbonizar la economía global.
+                            Optimizar la generación, distribución y consumo de energía limpia requiere modelos complejos de series temporales, optimización y predicción.</p>
+
+                        <p><strong>Ejemplos reales con Python:</strong></p>
+                        <ul>
+                            <li><strong>PyPSA - Python for Power System Analysis: </strong>Framework open-source para modelar sistemas energéticos completos (generación, transmisión, almacenamiento).
+                                Usado por el instituto Copernicus de la Universidad de Delft para modelar la transición energética 100% renovable de Europa, y por el NREL (National Renewable Energy Laboratory) de Estados Unidos para planificar la red eléctrica del futuro.</li>
+
+                            <li><strong>Predicción de generación solar (SOLCAST + Python): </strong>Empresas de energía en Australia, India y Chile usan Python con modelos de series temporales (Prophet, LSTM) para predecir la generación fotovoltaica con hasta 96 horas de antelación, reduciendo la necesidad de reservas de gas (bacjup) entre un 15-25%.</li>
+
+                            <li><strong>Open Energy Modelling Initative (openmod): </strong>Red de más de 500 investigadores que usan Python para construir modelos energéticos abiertos y reproducibles para la planificación fr políticas en Europa, África y Asia.
+                                Sus modelos han informado la política energética de Alemania y Dinamarca.</li>
+                        </ul>
+
+                        <p><strong>Impacto medible:</strong> PyPSA ha modelado escenarios de descarbonización total de Europa para 2050 con resolución horaria.
+                            Los modelos de predicción solar reducen emisiones de CO2 de centrales de respaldo en hasta 2 millones de toneladas anuales en sistemas de tamaño mediano.</p>
+
+                        <p><strong>Herramienta Python clave: </strong><em>PyPSA, pandas, NumPy, SciPy, Prophet, LSTM (PyTorch/TensorFlow), Plotly</em></p>
+                    </div>
+
+                    <div class="v-card">
+                        <span class="year">Acción por el clima (ODS 13)</span>
+                        <p><strong>Contexto: </strong>El cambio climático es el multiplicador de riesgos de todos los demás ODS.
+                            Modelarlo con precisión, comunicarlo con claridad y disñar políticas de adaptación basadas en datos requiere capacidades computacionales que Python lidera a nivel global.</p>
+
+                        <p><strong>Ejemplos reales con Python:</strong></p>
+                        <ul>
+                            <li><strong>Pangeo - Ciencia del clima a escala de petabytes: </strong>Plataforma de análisis climático de análisis climático construida sobre Python (Xarray, Dask, Zarr) que permite procesar los datos del modelo CMIP6 - más de 20 petabytes de simulaciones climáticas - en la nube sin descargarlos.
+                                Usada por el IPCC, NOAA, y más de 2.000 investigadores en 60 países para elaborar proyecciones de temperatura, precipitación y nivel del mar.</li>
+
+                            <li><strong>ESMValTool - Diagnóstico de modelos climáticos: </strong>Herramienta Python usada por el CMIP (Coupled Model Intercomparison Project) para evaluar y comparar modelos climáticos globales.
+                                Los diagnóstico que produce son citados directamente en los informes del IPCC AR6 como base científica de las políticas climáticas.</li>
+
+                            <li><strong>ClimateTrace -  Rastreo global de emisiones: </strong>Coalición que usa Python con imágenes satelitales y ML para rastrear emisiones de gases de efecto invernadero a nivel de instalación individual (centrales eléctricas, buques, campos de petróleo) en todo el mundo, de forma independiente de los datos gubernamentales autoreportados.</li>
+                        </ul>
+
+                        <p><strong>Impacto medible: </strong>Pangeo ha reducido el tiempo de análisis de conjuntos de datos climáticos globales de semanas a horas.
+                            ESMValTool es la herramienta de diagnóstico estándar del IPCC.
+                            ClimateTrace monitorea más de 352 millones de fuentes de emisiones.</p>
+
+                        <p><strong>Herramienta Python clave: </strong><em>Xarray, Dask, Zarr, Iris, Cartopy, Matplotlib, scikit-learn, TensorFlow</em></p>
+                    </div>
+
+                    <div class="v-card">
+                        <span class="year">Vida Submarina (ODS 14)</span>
+                        <p><strong>Contexto: </strong>Los océanos cubren el 71% del planeta y albergan el 80% de la biodiversidad de la Tierra.
+                            La vida terrestre enfreta la sexta extinción masiva de la historia.
+                            Monitorear ecosistemas a escala global y en tiempo real solo es posible con herramientas de análisis automatizado.</p>
+
+                        <p><strong>Ejemplos reales con Python:</strong></p>
+                        <ul>
+                            <li><strong>Global Fishing Watch: </strong>Sistema que usa Python con modelos de deep Learning sobre datos AIS (sistema de identificación automática de buques) para detectar pesca ilegal en tiempo real en todos los océanos del mundo.
+                                Ha permitido que autoridades de Indonesia, Perú y Chile inicien más de 300 investigaciones sobre pesca furtiva.</li>
+
+                            <li><strong>GBIF - Global Biodiversity Information Facility: </strong>La mayor base de datos de biodiversidad del mundo (más de 2.000 millones de registros de especies) usa Python para sus pipelines de ingesta, validación y análisis.
+                                Los científicos usan pygbif (cliente Python) para acceder a los datos y modelar distribuciones de especies con scikit-learn.</li>
+
+                            <li><strong>Acústica ecológica (BirdNET-Analyzer): </strong>Sistema de reconocimiento de aves por canto desarrollado en Python/TensorFlow por el Cornell Lab of Ornithology. 
+                                Identifica más de 6.000 especies de aves con más del 85% de precisión, permitiendo a científicos ciudadanos monitorear la biodiversidad en tiempo real con solo un smartphone.  </li>
+                        </ul>
+                        <p><strong>Impacto medible: </strong>Global Fishing Watch detecta más de 100.000 eventos de pesca ilegal potencial al mes.
+                            BirdNET ha sido usado en más de 180 países y ha procesado más de 100 millones de grabaciones de sonido de ecosistemas.</p>
+
+                        <p><strong>Herramientas Python clave: </strong><em>TensorFlow, PyTorch, GDAL, Rasterio, GeoPandas, pygbif, librosa</em></p>
                     </div>
                 </section>
             </main>
