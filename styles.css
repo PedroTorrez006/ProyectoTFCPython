@@ -104,6 +104,41 @@ body {
     border-radius: 0 10px 10px 0;
 }
 
+.ods-card {
+    background-color: var(--light-gray);
+    display: flex;
+    max-width: 100%;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 30px 0;
+    color: var(--dark-bg)
+}
+
+.ods-card .sidebar {
+    background-color: var(--python-blue);
+    width: 60px;
+    min-width: 60px; /* Evita que se encoja */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 2rem;
+    padding: 20px 0;
+}
+
+.ods-card-content {
+    padding: 25px 30px;
+    flex: 1;
+}
+
+.ods-card-content h3 {
+    margin-top: 0;
+    color: var(--python-blue);
+}
+
 .scroll-container {
     width: 100%;
     overflow-x: auto; 
@@ -193,7 +228,6 @@ footer {
 
     /* Menú vertical para que sea más facil tocar los botones */
     nav ul {
-        flex-direction: column;
         gap: 10px;
         padding: 15px 0;
     }
