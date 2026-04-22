@@ -19,6 +19,8 @@ La web se organiza en módulos independientes para facilitar el acceso a la info
 2. **Python 1.x (`version1.html`)**: Orígenes, tipos de datos iniciales y manejo de excepciones.
 3. **Python 2.x (`version2.html`)**: Madurez, unificación de tipos/clases y programación funcional.
 4. **Python 3.x (`version3.html`)**: Estándar actual, limpieza de sintaxis, Unicode nativo y optimización de memoria.
+5. **Arquitectura del Sistema (`ArquitecturaSistema.html`)**: Arquitectura del Sistema interno, Lógica Interna, Capas del sistema, diagramas de flujo de datos, estructura del ecosistema de Python, Tecnologías y Componentes Clave, Principios de Calidad y Escabilidad.
+6. **Impacto de Python en el ambito Sostenible (`ImpactoPythonODS.html`)**: Como Python ha influido en el ambito de la sostenibilidad, Posibles ODS que podría resolver
 
 ## Tecnologías y Estándares
 - **HTML5 & CSS3**: Estructura semántica y diseño visual unificado mediante una hoja de estilos global.
